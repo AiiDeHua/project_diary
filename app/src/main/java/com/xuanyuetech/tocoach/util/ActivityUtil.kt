@@ -32,9 +32,9 @@ object ActivityUtil {
     /**
      *
      */
-    fun startNewVideoEditor(fragment: Fragment, studentId : Int, uri : Uri){
+    fun startNewVideoEditor(fragment: Fragment, folderId : Int, uri : Uri){
         val intent = Intent(fragment.context, VideoEditorActivity::class.java)
-        intent.putExtra("student_id", studentId)
+        intent.putExtra("folder_id", folderId)
         intent.putExtra("EXTRA_INPUT_URI", uri)
         fragment.startActivityForResult(intent, GlobalVariable().REQUEST_NEW_VIDEO_EDITOR)
     }
@@ -42,16 +42,16 @@ object ActivityUtil {
     /**
      *
      */
-    fun startDairy(activity: Activity, diaryId: Int, studentId: Int){
-        val intent = diaryIntent(activity, diaryId, studentId)
+    fun startDairy(activity: Activity, diaryId: Int, folderId: Int){
+        val intent = diaryIntent(activity, diaryId, folderId)
         activity.startActivityForResult(intent, GlobalVariable().REQUEST_DAIRY)
     }
 
     /**
      *
      */
-    fun startDairy(fragment: Fragment, diaryId: Int, studentId: Int){
-        val intent = diaryIntent(fragment.context!!, diaryId, studentId)
+    fun startDairy(fragment: Fragment, diaryId: Int, folderId: Int){
+        val intent = diaryIntent(fragment.context!!, diaryId, folderId)
         fragment.startActivityForResult(intent, GlobalVariable().REQUEST_DAIRY)
     }
 
@@ -74,55 +74,55 @@ object ActivityUtil {
     /**
      *
      */
-    fun startStudent(activity: Activity, studentId: Int){
-        val intent = studentIntent(activity, studentId)
-        activity.startActivityForResult(intent, GlobalVariable().REQUEST_STUDENT)
+    fun startFolder(activity: Activity, folderId: Int){
+        val intent = folderIntent(activity, folderId)
+        activity.startActivityForResult(intent, GlobalVariable().REQUEST_FOLDER)
     }
 
     /**
      *
      */
-    fun startStudentProfile(fragment: Fragment, studentId: Int){
-        val intent = studentProfileIntent(fragment.context!!, studentId)
-        fragment.startActivityForResult(intent, GlobalVariable().REQUEST_STUDENT_PROFILE)
+    fun startFolderProfile(fragment: Fragment, folderId: Int){
+        val intent = folderProfileIntent(fragment.context!!, folderId)
+        fragment.startActivityForResult(intent, GlobalVariable().REQUEST_FOLDER_PROFILE)
     }
 
     /**
      *
      */
-    fun startStudentProfileEdit(fragment: Fragment, studentId: Int){
-        val intent = studentProfileEditIntent(fragment.context!!, studentId)
-        fragment.startActivityForResult(intent, GlobalVariable().REQUEST_STUDENT_PROFILE_EDIT)
+    fun startFolderProfileEdit(fragment: Fragment, folderId: Int){
+        val intent = folderProfileEditIntent(fragment.context!!, folderId)
+        fragment.startActivityForResult(intent, GlobalVariable().REQUEST_FOLDER_PROFILE_EDIT)
     }
 
     /**
      *
      */
-    fun startStudent(fragment: Fragment, studentId: Int){
-        val intent = studentIntent(fragment.context!!, studentId)
-        fragment.startActivityForResult(intent, GlobalVariable().REQUEST_STUDENT)
+    fun startFolder(fragment: Fragment, folderId: Int){
+        val intent = folderIntent(fragment.context!!, folderId)
+        fragment.startActivityForResult(intent, GlobalVariable().REQUEST_FOLDER)
     }
 
     /**
      *
      */
-    fun startCreateNewStudent(fragment: Fragment){
-        val intentNewStudent = Intent(fragment.context, NewFolderActivity::class.java)
-        fragment.startActivityForResult(intentNewStudent, GlobalVariable().REQUEST_NEW_STUDENT)
+    fun startCreateNewFolder(fragment: Fragment){
+        val intentNewFolder = Intent(fragment.context, NewFolderActivity::class.java)
+        fragment.startActivityForResult(intentNewFolder, GlobalVariable().REQUEST_NEW_FOLDER)
     }
 
     /**
      *
      */
-    fun getStudentIdFromIntent(intent: Intent) : Int{
-        return intent.getIntExtra("student_id",-1)
+    fun getFolderIdFromIntent(intent: Intent) : Int{
+        return intent.getIntExtra("folder_id",-1)
     }
 
     /**
      *
      */
     fun getVideoIdFromIntent(intent : Intent) : Int{
-        return intent.getIntExtra("student_video_id", -1)
+        return intent.getIntExtra("folder_video_id", -1)
     }
 
     /**
@@ -179,37 +179,37 @@ object ActivityUtil {
      */
     private fun videoPlayerIntent(context : Context, videoId : Int) : Intent{
         val intent = Intent(context, VideoPlayerActivity::class.java)
-        intent.putExtra("student_video_id", videoId)
+        intent.putExtra("folder_video_id", videoId)
         return intent
     }
 
     /**
      *
      */
-    private fun studentIntent(context: Context, studentId : Int) : Intent{
-        val intent = Intent(context, StudentActivity()::class.java)
-        intent.putExtra("student_id",studentId)
+    private fun folderIntent(context: Context, folderId : Int) : Intent{
+        val intent = Intent(context, FolderActivity()::class.java)
+        intent.putExtra("folder_id",folderId)
         return intent
     }
 
-    private fun studentProfileIntent(context: Context, studentId: Int) : Intent{
-        val intent = Intent(context, StudentProfileActivity :: class.java)
-        intent.putExtra("student_id", studentId)
+    private fun folderProfileIntent(context: Context, folderId: Int) : Intent{
+        val intent = Intent(context, FolderProfileActivity :: class.java)
+        intent.putExtra("folder_id", folderId)
         return intent
     }
 
-    private fun studentProfileEditIntent(context: Context, studentId: Int) : Intent{
-        val intent = Intent(context, StudentProfileEditActivity::class.java)
-        intent.putExtra("student_id", studentId)
+    private fun folderProfileEditIntent(context: Context, folderId: Int) : Intent{
+        val intent = Intent(context, FolderProfileEditActivity::class.java)
+        intent.putExtra("folder_id", folderId)
         return intent
     }
 
     /**
      *
      */
-    private fun diaryIntent(context : Context, diaryId: Int, studentId : Int) : Intent{
+    private fun diaryIntent(context : Context, diaryId: Int, folderId : Int) : Intent{
         val intent = Intent(context, DiaryActivity()::class.java)
-        intent.putExtra("student_id",studentId)
+        intent.putExtra("folder_id",folderId)
         intent.putExtra("diary_id",diaryId)
         return intent
     }

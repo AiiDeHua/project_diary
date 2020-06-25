@@ -7,9 +7,9 @@
         android:title="@string/mainActivity_homeFrag_title" />
 
     <item
-        android:id="@+id/nav_main_students"
-        android:icon="@drawable/ic_student_list_24px"
-        android:title="@string/mainActivity_studentsFrag_title" />
+        android:id="@+id/nav_main_folders"
+        android:icon="@drawable/ic_folder_list_24px"
+        android:title="@string/mainActivity_foldersFrag_title" />
 
     <item
         android:id="@+id/nav_main_calendar"

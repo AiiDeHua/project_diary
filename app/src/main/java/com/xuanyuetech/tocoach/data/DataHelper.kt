@@ -8,12 +8,12 @@ import java.io.File
 class DataHelper {
 
     //region delete
-    fun deleteStudentVideo(video : Video, databaseHelper: DatabaseHelper){
+    fun deleteFolderVideo(video : Video, databaseHelper: DatabaseHelper){
         //delete files
         deleteFilePath(video.localUrl)
         deleteFilePath(video.coverPath)
 
-        databaseHelper.deleteStudentVideo(video)
+        databaseHelper.deleteFolderVideo(video)
         deleteHomeEvent(video, databaseHelper)
     }
 
@@ -22,24 +22,24 @@ class DataHelper {
         deleteHomeEvent(diary, databaseHelper)
     }
 
-    fun deleteStudent(student : Student, databaseHelper : DatabaseHelper){
+    fun deleteFolder(folder : Folder, databaseHelper : DatabaseHelper){
         //delete files
-        deleteFilePath(student.profileImagePath)
-        deleteFilePath(student.backgroundImagePath)
+        deleteFilePath(folder.profileImagePath)
+        deleteFilePath(folder.backgroundImagePath)
 
         //delete all videos
-        val videos = databaseHelper.getAllStudentVideoByStudentId(student.id)
+        val videos = databaseHelper.getAllFolderVideoByFolderId(folder.id)
         for(video in videos){
-            deleteStudentVideo(video, databaseHelper)
+            deleteFolderVideo(video, databaseHelper)
         }
 
         //delete all videos
-        val diaries = databaseHelper.getAllDairyByStudentId(student.id)
+        val diaries = databaseHelper.getAllDairyByFolderId(folder.id)
         for(diary in diaries){
             deleteDairy(diary, databaseHelper)
         }
 
-        databaseHelper.deleteStudent(student)
+        databaseHelper.deleteFolder(folder)
     }
 
     //endregion
@@ -50,18 +50,18 @@ class DataHelper {
         updateHomeEvent(video, databaseHelper)
     }
 
-    fun updateStudent(student: Student, databaseHelper: DatabaseHelper){
-        if(databaseHelper.findStudentById(student.id)!!.name != student.name){
-            for(sv in databaseHelper.getAllStudentVideoByStudentId(studentId = student.id)){
-                sv.studentName = student.name
+    fun updateFolder(folder: Folder, databaseHelper: DatabaseHelper){
+        if(databaseHelper.findFolderById(folder.id)!!.name != folder.name){
+            for(sv in databaseHelper.getAllFolderVideoByFolderId(folderId = folder.id)){
+                sv.folderName = folder.name
                 updateVideo(sv, databaseHelper)
             }
-            for(diary in databaseHelper.getAllDairyByStudentId(studentId = student.id)){
-                diary.studentName = student.name
+            for(diary in databaseHelper.getAllDairyByFolderId(folderId = folder.id)){
+                diary.folderName = folder.name
                 updateDairy(diary, databaseHelper)
             }
         }
-        databaseHelper.updateStudent(student)
+        databaseHelper.updateFolder(folder)
     }
 
     fun updateDairy(diary: Diary, databaseHelper: DatabaseHelper){
@@ -72,14 +72,14 @@ class DataHelper {
     //endregion
 
     //region add
-    fun addStudent(student : Student, databaseHelper: DatabaseHelper) : Long{
-        val id = databaseHelper.addStudent(student)
-        student.id = id.toInt()
+    fun addFolder(folder : Folder, databaseHelper: DatabaseHelper) : Long{
+        val id = databaseHelper.addFolder(folder)
+        folder.id = id.toInt()
         return id
     }
 
     fun addVideo(video : Video, databaseHelper: DatabaseHelper) : Long{
-        val id = databaseHelper.addStudentVideo(video)
+        val id = databaseHelper.addFolderVideo(video)
         video.id = id.toInt()
         addHomeEvent(video, databaseHelper)
         return id

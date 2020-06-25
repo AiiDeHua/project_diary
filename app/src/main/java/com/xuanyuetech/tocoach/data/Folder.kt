@@ -1,9 +1,9 @@
 package com.xuanyuetech.tocoach.data
 
 /**
- * the student class
+ * the folder class
  */
-class Student(){
+class Folder(){
 
     //region properties
 

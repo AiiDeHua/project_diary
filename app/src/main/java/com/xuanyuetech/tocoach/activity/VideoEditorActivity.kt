@@ -25,7 +25,7 @@ class VideoEditorActivity : BasicActivity(){
 
     private lateinit var inputVideoUri: Uri
     private lateinit var databaseHelper: DatabaseHelper
-    private var studentId = -1
+    private var folderId = -1
 
     //endregion
 
@@ -88,7 +88,7 @@ class VideoEditorActivity : BasicActivity(){
      *
      */
     private fun initData(){
-        studentId = ActivityUtil.getStudentIdFromIntent(intent)
+        folderId = ActivityUtil.getFolderIdFromIntent(intent)
 
         try {
             inputVideoUri = ActivityUtil.getVideoUriFromIntent(intent)
@@ -106,7 +106,7 @@ class VideoEditorActivity : BasicActivity(){
     private fun initFragment(){
 
         val bundle = Bundle()
-        bundle.putInt("student_id",studentId)
+        bundle.putInt("folder_id",folderId)
 
         val videoEditorFragment = VideoEditorFragment(inputVideoUri)
         videoEditorFragment.arguments = bundle

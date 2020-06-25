@@ -8,18 +8,18 @@ import org.threeten.bp.format.DateTimeFormatter
 /**
  * Dairy data
  */
-class Diary() : StudentArchiveObject, HomeEventObject{
+class Diary() : FolderArchiveObject, HomeEventObject{
 
     //region properties
 
     var id = -1
-    var studentId = -1
+    var folderId = -1
 
     var title = ""
     var content = ""
     var updateTime = ""
     var initTime = ""
-    var studentName = ""
+    var folderName = ""
 
     //internal conversion usage
     private val timeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy年 M月 d日 HH:mm EEEE")
@@ -33,24 +33,24 @@ class Diary() : StudentArchiveObject, HomeEventObject{
     /**
      * new diary create
      */
-    constructor(studentId : Int, localDateTime: LocalDateTime, studentName: String) : this(){
-        this.studentId = studentId
+    constructor(folderId : Int, localDateTime: LocalDateTime, folderName: String) : this(){
+        this.folderId = folderId
         this.updateTime = localDateTime.format(timeFormatter)
         initTime = localDateTime.format(timeFormatter)
-        this.studentName = studentName
+        this.folderName = folderName
     }
 
     /**
      * convert from DB
      */
-    constructor(id : Int, studentId : Int, initTime : String, title : String, content: String, updateTime : String, studentName : String) : this() {
+    constructor(id : Int, folderId : Int, initTime : String, title : String, content: String, updateTime : String, folderName : String) : this() {
         this.id = id
         this.title = title
         this.content = content
-        this.studentId = studentId
+        this.folderId = folderId
         this.updateTime = updateTime
         this.initTime = initTime
-        this.studentName = studentName
+        this.folderName = folderName
     }
 
     //endregion
@@ -66,7 +66,7 @@ class Diary() : StudentArchiveObject, HomeEventObject{
 
     //endregion
 
-    //region StudentArchiveObject interface
+    //region FolderArchiveObject interface
 
     override fun getArchiveTitle(): String {
         return title
@@ -88,8 +88,8 @@ class Diary() : StudentArchiveObject, HomeEventObject{
         return LocalDateTime.parse(initTime, timeFormatter)
     }
 
-    override fun getArchiveStudentName(): String {
-        return studentName
+    override fun getArchiveFolderName(): String {
+        return folderName
     }
 
     //endregion
@@ -116,8 +116,8 @@ class Diary() : StudentArchiveObject, HomeEventObject{
         return LocalDateTime.parse(initTime, timeFormatter)
     }
 
-    override fun getStudentId(): String {
-        return studentId.toString()
+    override fun getFolderId(): String {
+        return folderId.toString()
     }
 
     //endregion

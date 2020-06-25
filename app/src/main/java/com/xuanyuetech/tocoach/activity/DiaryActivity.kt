@@ -13,7 +13,7 @@ class DiaryActivity : BasicActivity() {
 
     //region properties
 
-    private var studentId = -1
+    private var folderId = -1
     private var diaryId = -1
 
     //endregion
@@ -23,7 +23,7 @@ class DiaryActivity : BasicActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        getStudentData()
+        getFolderData()
 
         setContentView(R.layout.activity_diary)
 
@@ -55,7 +55,7 @@ class DiaryActivity : BasicActivity() {
     private fun initFragment(){
 
         val bundle = Bundle()
-        bundle.putInt("student_id",studentId)
+        bundle.putInt("folder_id",folderId)
         bundle.putInt("diary_id",diaryId)
 
         val diaryFragment = DiaryFragment()
@@ -74,8 +74,8 @@ class DiaryActivity : BasicActivity() {
     /**
      *
      */
-    private fun getStudentData(){
-        studentId = ActivityUtil.getStudentIdFromIntent(intent)
+    private fun getFolderData(){
+        folderId = ActivityUtil.getFolderIdFromIntent(intent)
         diaryId = ActivityUtil.getDairyIdFromIntent(intent)
     }
 

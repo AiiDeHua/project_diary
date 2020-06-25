@@ -22,6 +22,6 @@ class FilePathHelper(val context: Context) {
 
     fun diaryDirPath(id : Int) = "$appDiaryDirPath$id/"
 
-    fun studentProfileImagePath(id : Int) = appProfileDirPath + "studentProfilePic$id.jpg"
-    fun studentBackgroundImagePath(id : Int) = appProfileDirPath + "studentBackgroundPic$id.jpg"
+    fun folderProfileImagePath(id : Int) = appProfileDirPath + "folderProfilePic$id.jpg"
+    fun folderBackgroundImagePath(id : Int) = appProfileDirPath + "folderBackgroundPic$id.jpg"
 }

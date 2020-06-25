@@ -1570,18 +1570,18 @@ class VideoEditorFragment constructor(private val inputVideoUri: Uri) :
      * post data to database
      */
     private fun saveVideoData() {
-        val studentId = arguments!!.getInt("student_id")
+        val folderId = arguments!!.getInt("folder_id")
         val createdTime = LocalDateTime.now()
 
         val video = Video(
-            studentId = studentId,
+            folderId = folderId,
             initTime = createdTime,
             title = title,
             cloudUrl = "",
             localUrl = outputFilePath,
             notes = notes,
             coverUrl = coverPath,
-            studentName = databaseHelper.findStudentById(studentId)!!.name
+            folderName = databaseHelper.findFolderById(folderId)!!.name
         )
         DataHelper().addVideo(video, databaseHelper)
     }
@@ -1919,7 +1919,7 @@ return result
         saveVideoData()
         saveProgressDialog!!.dismiss()
 
-        activity!!.setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+        activity!!.setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
         activity!!.finish()
     }
 

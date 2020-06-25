@@ -11,7 +11,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="姓名"
+        tools:text="名称"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:padding="10dp"/>

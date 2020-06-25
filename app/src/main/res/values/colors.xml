@@ -37,7 +37,7 @@
 
     <color name="sky_blue_70">#B3C7ECEE</color>
 
-<!--    student archive Fab color   -->
+<!--    folder archive Fab color   -->
     <color name="color_videoEditor_fab">#E670A1FF</color>
     <color name="color_videoEditor_fab_pressed">#70a1ff</color>
     <color name="color_videoEditor_fab_button">#E670A1FF</color>

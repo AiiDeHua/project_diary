@@ -33,14 +33,14 @@ class DiaryFragment : BasicFragment() {
 
     private lateinit var mEditor : RichEditor
     private lateinit var titleText : EditText
-    private lateinit var studentView : TextView
+    private lateinit var folderView : TextView
     private lateinit var timeView : TextView
     private lateinit var deleteMenuItem : MenuItem
 
-    private var studentId = -1
+    private var folderId = -1
     private var diaryId = -1
     private var diary : Diary? = null
-    private var student : Student? = null
+    private var folder : Folder? = null
 
     //the var to check diary's dirty
     private lateinit var initTitle : String
@@ -88,7 +88,7 @@ class DiaryFragment : BasicFragment() {
 
         titleText = mView.findViewById(R.id.titleText)
         timeView = mView.findViewById(R.id.timeView)
-        studentView = mView.findViewById(R.id.studentView)
+        folderView = mView.findViewById(R.id.folderView)
 
         //limit title length
         titleText.setMaxLength(Diary().maxTitleLength)
@@ -155,10 +155,10 @@ class DiaryFragment : BasicFragment() {
     }
 
     /**
-     * init data, it might be the new diary with only studentId, or the existing diary
+     * init data, it might be the new diary with only folderId, or the existing diary
      */
     private fun initData(){
-        studentId = arguments!!.getInt("student_id")
+        folderId = arguments!!.getInt("folder_id")
         diaryId = arguments!!.getInt("diary_id")
 
         when {
@@ -172,15 +172,15 @@ class DiaryFragment : BasicFragment() {
 
                 mEditor.html = diary!!.content
 
-                student = databaseHelper.findStudentById(diary!!.studentId)
+                folder = databaseHelper.findFolderById(diary!!.folderId)
 
                 initContent = diary!!.content
                 initTitle = diary!!.title
             }
-            studentId > 0 -> {
+            folderId > 0 -> {
                 //if there is no diary, no time show
                 timeView.text = ""
-                student = databaseHelper.findStudentById(studentId)
+                folder = databaseHelper.findFolderById(folderId)
 
                 initContent = ""
                 initTitle = ""
@@ -190,7 +190,7 @@ class DiaryFragment : BasicFragment() {
             }
         }
 
-        studentView.text = student!!.name
+        folderView.text = folder!!.name
     }
 
     //endregion
@@ -225,7 +225,7 @@ class DiaryFragment : BasicFragment() {
 
                 if(diary == null){
                     //diary is new
-                    val newDairy = Diary(studentId, currentTime, student!!.name)
+                    val newDairy = Diary(folderId, currentTime, folder!!.name)
 
                     try{
                         //since content has issue with null html, have to use try/catch
@@ -259,7 +259,7 @@ class DiaryFragment : BasicFragment() {
 
                 Toast.makeText(context,"成功保存!",Toast.LENGTH_SHORT).show()
 
-                activity?.setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+                activity?.setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
 
                 isSaved = true
 
@@ -284,7 +284,7 @@ class DiaryFragment : BasicFragment() {
                         dialog.dismiss()
 
                         Toast.makeText(context,"成功删除!",Toast.LENGTH_SHORT).show()
-                        activity?.setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+                        activity?.setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
                         activity?.finish()
                     }
                     .setNegativeButton("取消", null)
@@ -325,7 +325,7 @@ class DiaryFragment : BasicFragment() {
                 .setMessage("确定要放弃未保存的编辑吗")
                 .setPositiveButton("确定") { dialog, _ ->
                     dialog.dismiss()
-                    if(isSaved) activity?.setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+                    if(isSaved) activity?.setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
                     activity!!.finish()
                 }
                 .setNegativeButton("取消", null)

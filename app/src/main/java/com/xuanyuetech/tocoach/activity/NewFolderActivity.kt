@@ -3,10 +3,10 @@ package com.xuanyuetech.tocoach.activity
 import android.app.Activity
 import android.os.Bundle
 import com.xuanyuetech.tocoach.R
-import com.xuanyuetech.tocoach.fragment.students.new_student.NewStudentFragment
+import com.xuanyuetech.tocoach.fragment.folders.new_folder.NewFolderFragment
 
 /**
- * new student activity
+ * new folder activity
  */
 class NewFolderActivity : BasicActivity() {
 
@@ -44,7 +44,7 @@ class NewFolderActivity : BasicActivity() {
         val ts = supportFragmentManager.beginTransaction()
         ts.add(
             R.id.nav_host_fragment_new_folder,
-            NewStudentFragment()
+            NewFolderFragment()
         )
         ts.commit()
     }

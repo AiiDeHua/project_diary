@@ -50,7 +50,7 @@ class HomeCardViewAdapter(private val homeEvents: List<HomeEvent>, val context :
             holder.imageView.setImageResource(R.drawable.diary_cover)
         }
 
-        holder.studentView.text = DatabaseHelper(context).findStudentById(homeEvents[position].studentId.toInt())!!.name
+        holder.folderView.text = DatabaseHelper(context).findFolderById(homeEvents[position].folderId.toInt())!!.name
 
         holder.itemView.setOnClickListener {
             itemClickListener!!.onItemClickListener(position)
@@ -65,7 +65,7 @@ class HomeCardViewAdapter(private val homeEvents: List<HomeEvent>, val context :
         val imageView: ImageView = view.findViewById(R.id.homeEvent_imageView)
         val titleView: TextView = view.findViewById(R.id.homeEvent_title)
         val notesView: TextView = view.findViewById(R.id.homeEvent_notes)
-        val studentView: TextView = view.findViewById(R.id.homeEvent_folder)
+        val folderView: TextView = view.findViewById(R.id.homeEvent_folder)
     }
 
     /**

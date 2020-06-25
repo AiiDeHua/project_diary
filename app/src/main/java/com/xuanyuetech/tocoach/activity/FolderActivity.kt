@@ -3,12 +3,12 @@ package com.xuanyuetech.tocoach.activity
 import android.os.Bundle
 import android.view.Window
 import com.xuanyuetech.tocoach.R
-import com.xuanyuetech.tocoach.fragment.students.student.StudentArchiveFragment
+import com.xuanyuetech.tocoach.fragment.folders.folder.FolderArchiveFragment
 
 /**
- * Student activity to hold all Student's related stuff
+ * Folder activity to hold all Folder's related stuff
  */
-class StudentActivity: BasicActivity() {
+class FolderActivity: BasicActivity() {
 
     //region onCreate
 
@@ -19,8 +19,8 @@ class StudentActivity: BasicActivity() {
 
         val ts = supportFragmentManager.beginTransaction()
         ts.add(
-            R.id.nav_host_fragment_student,
-            StudentArchiveFragment()
+            R.id.nav_host_fragment_folder,
+            FolderArchiveFragment()
         )
         ts.commit()
 

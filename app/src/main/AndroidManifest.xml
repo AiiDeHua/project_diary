@@ -54,20 +54,20 @@
             android:configChanges="keyboardHidden|orientation"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.StudentActivity"
+            android:name="com.xuanyuetech.tocoach.activity.FolderActivity"
             android:parentActivityName="com.xuanyuetech.tocoach.activity.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:configChanges="keyboardHidden|orientation"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.StudentProfileActivity"
-            android:parentActivityName="com.xuanyuetech.tocoach.activity.StudentActivity"
+            android:name="com.xuanyuetech.tocoach.activity.FolderProfileActivity"
+            android:parentActivityName="com.xuanyuetech.tocoach.activity.FolderActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.StudentProfileEditActivity"
-            android:parentActivityName="com.xuanyuetech.tocoach.activity.StudentProfileActivity"
+            android:name="com.xuanyuetech.tocoach.activity.FolderProfileEditActivity"
+            android:parentActivityName="com.xuanyuetech.tocoach.activity.FolderProfileActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name="com.xuanyuetech.tocoach.activity.VideoPlayerActivity"

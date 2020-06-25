@@ -22,37 +22,37 @@ class DatabaseHelper(context: Context) :
         private const val DATABASE_VERSION = 2
 
         // Database Name
-        private const val DATABASE_NAME = "studentManager.db"
+        private const val DATABASE_NAME = "folderManager.db"
 
         // User table name
-        private const val TABLE_STUDENT = "student"
-        private const val TABLE_STUDENT_VIDEO = "student_video"
+        private const val TABLE_FOLDER = "folder"
+        private const val TABLE_FOLDER_VIDEO = "folder_video"
         private const val TABLE_CALENDAR_EVENT = "calendar_event"
         private const val TABLE_HOME_EVENT = "home_event"
         private const val TABLE_DAIRY = "diary"
 
-        // User Table Columns names for student
-        private const val COLUMN_STUDENT_ID = "student_id"
-        private const val COLUMN_STUDENT_NAME = "student_name"
-        private const val COLUMN_STUDENT_NOTES = "student_notes"
-        private const val COLUMN_STUDENT_PROFILE_IMAGE = "student_profile_image"
-        private const val COLUMN_STUDENT_BACKGROUND_IMAGE = "student_background_image"
+        // User Table Columns names for folder
+        private const val COLUMN_FOLDER_ID = "folder_id"
+        private const val COLUMN_FOLDER_NAME = "folder_name"
+        private const val COLUMN_FOLDER_NOTES = "folder_notes"
+        private const val COLUMN_FOLDER_PROFILE_IMAGE = "folder_profile_image"
+        private const val COLUMN_FOLDER_BACKGROUND_IMAGE = "folder_background_image"
 
-        //Columns for student video
-        private const val COLUMN_STUDENT_VIDEO_ID = "student_video_id"
-        private const val COLUMN_STUDENT_VIDEO_INIT_TIME = "student_video_init_time"
-        private const val COLUMN_STUDENT_VIDEO_UPDATE_TIME = "student_video_update_time"
-        private const val COLUMN_STUDENT_VIDEO_CLOUD_URL = "student_video_cloud_url"
-        private const val COLUMN_STUDENT_VIDEO_LOCAL_URL = "student_video_local_url"
-        private const val COLUMN_STUDENT_VIDEO_TITLE = "student_video_title"
-        private const val COLUMN_STUDENT_VIDEO_NOTES = "student_video_notes"
-        private const val COLUMN_STUDENT_VIDEO_COVER_URL = "student_video_cover_url"
-        private const val COLUMN_STUDENT_VIDEO_STUDENT_NAME = "student_video_student_name"
+        //Columns for folder video
+        private const val COLUMN_FOLDER_VIDEO_ID = "folder_video_id"
+        private const val COLUMN_FOLDER_VIDEO_INIT_TIME = "folder_video_init_time"
+        private const val COLUMN_FOLDER_VIDEO_UPDATE_TIME = "folder_video_update_time"
+        private const val COLUMN_FOLDER_VIDEO_CLOUD_URL = "folder_video_cloud_url"
+        private const val COLUMN_FOLDER_VIDEO_LOCAL_URL = "folder_video_local_url"
+        private const val COLUMN_FOLDER_VIDEO_TITLE = "folder_video_title"
+        private const val COLUMN_FOLDER_VIDEO_NOTES = "folder_video_notes"
+        private const val COLUMN_FOLDER_VIDEO_COVER_URL = "folder_video_cover_url"
+        private const val COLUMN_FOLDER_VIDEO_FOLDER_NAME = "folder_video_folder_name"
 
         //Columns for CalendarEvent
         private const val COLUMN_CALENDAR_EVENT_ID = "calender_event_id"
         private const val COLUMN_CALENDAR_EVENT_TITLE = "calendar_event_title"
-        private const val COLUMN_CALENDAR_EVENT_STUDENTS = "calendar_event_students"
+        private const val COLUMN_CALENDAR_EVENT_ATTENDANTS = "calendar_event_attendants"
         private const val COLUMN_CALENDAR_EVENT_LOCATION = "calendar_event_location"
         private const val COLUMN_CALENDAR_EVENT_NOTES = "calendar_event_notes"
         private const val COLUMN_CALENDAR_EVENT_START_TIME = "calendar_event_start_time"
@@ -76,7 +76,7 @@ class DatabaseHelper(context: Context) :
         private const val COLUMN_DAIRY_INIT_TIME = "diary_init_time"
         private const val COLUMN_DAIRY_TITLE = "diary_title"
         private const val COLUMN_DAIRY_CONTENT = "diary_content"
-        private const val COLUMN_DAIRY_STUDENT_NAME = "student_name"
+        private const val COLUMN_DAIRY_FOLDER_NAME = "folder_name"
         private const val COLUMN_DAIRY_UPDATE_TIME = "diary_update_time"
 
     }
@@ -85,32 +85,32 @@ class DatabaseHelper(context: Context) :
 
     //region create table sql query
 
-    private val createStudentTable = (
-            "CREATE TABLE " + TABLE_STUDENT + "("
-                    + COLUMN_STUDENT_ID.toIntPKAutoInc(true) + ","
-                    + COLUMN_STUDENT_NAME.toTextNotNull(true) + ","
-                    + COLUMN_STUDENT_PROFILE_IMAGE.toTextNotNull(false) + ","
-                    + COLUMN_STUDENT_NOTES.toTextNotNull(false) + ","
-                    + COLUMN_STUDENT_BACKGROUND_IMAGE.toTextNotNull(false) +  ")")
+    private val createFolderTable = (
+            "CREATE TABLE " + TABLE_FOLDER + "("
+                    + COLUMN_FOLDER_ID.toIntPKAutoInc(true) + ","
+                    + COLUMN_FOLDER_NAME.toTextNotNull(true) + ","
+                    + COLUMN_FOLDER_PROFILE_IMAGE.toTextNotNull(false) + ","
+                    + COLUMN_FOLDER_NOTES.toTextNotNull(false) + ","
+                    + COLUMN_FOLDER_BACKGROUND_IMAGE.toTextNotNull(false) +  ")")
 
-    private val createStudentVideoTable = (
-            "CREATE TABLE " + TABLE_STUDENT_VIDEO + "("
-                    + COLUMN_STUDENT_VIDEO_ID.toIntPKAutoInc(true) + ","
-                    + COLUMN_STUDENT_VIDEO_INIT_TIME.toTextNotNull(true) + ","
-                    + COLUMN_STUDENT_VIDEO_UPDATE_TIME.toTextNotNull(true) + ","
-                    + COLUMN_STUDENT_VIDEO_TITLE.toTextNotNull(false) + ","
-                    + COLUMN_STUDENT_ID + " INTEGER REFERENCES " + TABLE_STUDENT + "(" + COLUMN_STUDENT_ID + ") ON DELETE CASCADE,"
-                    + COLUMN_STUDENT_VIDEO_CLOUD_URL.toTextNotNull(false) + ","
-                    + COLUMN_STUDENT_VIDEO_LOCAL_URL.toTextNotNull(false) + ","
-                    + COLUMN_STUDENT_VIDEO_NOTES.toTextNotNull(false) + ","
-                    + COLUMN_STUDENT_VIDEO_COVER_URL.toTextNotNull(false) + ","
-                    + COLUMN_STUDENT_VIDEO_STUDENT_NAME.toTextNotNull(false) +")")
+    private val createFolderVideoTable = (
+            "CREATE TABLE " + TABLE_FOLDER_VIDEO + "("
+                    + COLUMN_FOLDER_VIDEO_ID.toIntPKAutoInc(true) + ","
+                    + COLUMN_FOLDER_VIDEO_INIT_TIME.toTextNotNull(true) + ","
+                    + COLUMN_FOLDER_VIDEO_UPDATE_TIME.toTextNotNull(true) + ","
+                    + COLUMN_FOLDER_VIDEO_TITLE.toTextNotNull(false) + ","
+                    + COLUMN_FOLDER_ID + " INTEGER REFERENCES " + TABLE_FOLDER + "(" + COLUMN_FOLDER_ID + ") ON DELETE CASCADE,"
+                    + COLUMN_FOLDER_VIDEO_CLOUD_URL.toTextNotNull(false) + ","
+                    + COLUMN_FOLDER_VIDEO_LOCAL_URL.toTextNotNull(false) + ","
+                    + COLUMN_FOLDER_VIDEO_NOTES.toTextNotNull(false) + ","
+                    + COLUMN_FOLDER_VIDEO_COVER_URL.toTextNotNull(false) + ","
+                    + COLUMN_FOLDER_VIDEO_FOLDER_NAME.toTextNotNull(false) +")")
 
     private val createCalendarEventTable = (
             "CREATE TABLE " + TABLE_CALENDAR_EVENT + "("
                     + COLUMN_CALENDAR_EVENT_ID.toIntPKAutoInc(true) + ","
                     + COLUMN_CALENDAR_EVENT_TITLE.toTextNotNull(true) + ","
-                    + COLUMN_CALENDAR_EVENT_STUDENTS.toTextNotNull(false) + ","
+                    + COLUMN_CALENDAR_EVENT_ATTENDANTS.toTextNotNull(false) + ","
                     + COLUMN_CALENDAR_EVENT_LOCATION.toTextNotNull(false) + ","
                     + COLUMN_CALENDAR_EVENT_NOTES.toTextNotNull(false) + ","
                     + COLUMN_CALENDAR_EVENT_START_TIME.toTextNotNull(true) + ","
@@ -128,26 +128,26 @@ class DatabaseHelper(context: Context) :
                     + COLUMN_HOME_EVENT_IMAGE_URL.toTextNotNull(false) + ","
                     + COLUMN_HOME_EVENT_TYPE.toTextNotNull(true) + ","
                     + COLUMN_HOME_EVENT_REF_ID.toTextNotNull(true) + ","
-                    + COLUMN_STUDENT_ID + " INTEGER REFERENCES " + TABLE_STUDENT + "(" + COLUMN_STUDENT_ID + ") ON DELETE CASCADE,"
+                    + COLUMN_FOLDER_ID + " INTEGER REFERENCES " + TABLE_FOLDER + "(" + COLUMN_FOLDER_ID + ") ON DELETE CASCADE,"
                     + COLUMN_HOME_EVENT_TIME.toTextNotNull(true) + ")")
 
     private val createDairyTable = (
             "CREATE TABLE " + TABLE_DAIRY + "("
                     + COLUMN_DAIRY_ID.toIntPKAutoInc(true) + ","
-                    + COLUMN_STUDENT_ID + " INTEGER REFERENCES " + TABLE_STUDENT + "(" + COLUMN_STUDENT_ID + ") ON DELETE CASCADE,"
+                    + COLUMN_FOLDER_ID + " INTEGER REFERENCES " + TABLE_FOLDER + "(" + COLUMN_FOLDER_ID + ") ON DELETE CASCADE,"
                     + COLUMN_DAIRY_TITLE.toTextNotNull(false) + ","
                     + COLUMN_DAIRY_INIT_TIME.toTextNotNull(true) + ","
                     + COLUMN_DAIRY_UPDATE_TIME.toTextNotNull(true) + ","
                     + COLUMN_DAIRY_CONTENT.toTextNotNull(false) + ","
-                    + COLUMN_DAIRY_STUDENT_NAME.toTextNotNull(true) + ")")
+                    + COLUMN_DAIRY_FOLDER_NAME.toTextNotNull(true) + ")")
 
     //endregion
 
     //region drop table sql query
-    private val dropStudentTable: String
-        get() = "DROP TABLE IF EXISTS $TABLE_STUDENT"
-    private val dropStudentVideoTable: String
-        get() = "DROP TABLE IF EXISTS $TABLE_STUDENT_VIDEO"
+    private val dropFolderTable: String
+        get() = "DROP TABLE IF EXISTS $TABLE_FOLDER"
+    private val dropFolderVideoTable: String
+        get() = "DROP TABLE IF EXISTS $TABLE_FOLDER_VIDEO"
     private val dropCalendarEventTable: String
         get() = "DROP TABLE IF EXISTS $TABLE_CALENDAR_EVENT"
     private val dropHomeEventTable: String
@@ -163,8 +163,8 @@ class DatabaseHelper(context: Context) :
      * create req tables
      */
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL(createStudentTable)
-        db.execSQL(createStudentVideoTable)
+        db.execSQL(createFolderTable)
+        db.execSQL(createFolderVideoTable)
         db.execSQL(createCalendarEventTable)
         db.execSQL(createHomeEventTable)
         db.execSQL(createDairyTable)
@@ -192,31 +192,31 @@ class DatabaseHelper(context: Context) :
 
     //region query function
 
-    //region student table
+    //region folder table
 
     /**
      *
      */
-    fun getAllStudent(): ArrayList<Student> {
+    fun getAllFolder(): ArrayList<Folder> {
 
         // array of columns to fetch
         val columns = arrayOf(
-            COLUMN_STUDENT_ID,
-            COLUMN_STUDENT_NAME,
-            COLUMN_STUDENT_NOTES,
-            COLUMN_STUDENT_PROFILE_IMAGE,
-            COLUMN_STUDENT_BACKGROUND_IMAGE
+            COLUMN_FOLDER_ID,
+            COLUMN_FOLDER_NAME,
+            COLUMN_FOLDER_NOTES,
+            COLUMN_FOLDER_PROFILE_IMAGE,
+            COLUMN_FOLDER_BACKGROUND_IMAGE
         )
 
         // sorting orders
-        val sortOrder = "$COLUMN_STUDENT_ID ASC"
-        val studentList = ArrayList<Student>()
+        val sortOrder = "$COLUMN_FOLDER_ID ASC"
+        val folderList = ArrayList<Folder>()
 
         val db = this.readableDatabase
 
         // query the user table
         val cursor = db.query(
-            TABLE_STUDENT, //Table to query
+            TABLE_FOLDER, //Table to query
             columns,            //columns to return
             null,     //columns for the WHERE clause
             null,  //The values for the WHERE clause
@@ -227,47 +227,47 @@ class DatabaseHelper(context: Context) :
 
         if (cursor.moveToFirst()) {
             do {
-                val foundStudent = Student(
-                    id = cursor.getDecodeString(COLUMN_STUDENT_ID).toInt(),
-                    name = cursor.getDecodeString(COLUMN_STUDENT_NAME),
-                    notes = cursor.getDecodeString(COLUMN_STUDENT_NOTES),
-                    profileImagePath = cursor.getDecodeString(COLUMN_STUDENT_PROFILE_IMAGE),
-                    backgroundImagePath = cursor.getDecodeString(COLUMN_STUDENT_BACKGROUND_IMAGE)
+                val foundFolder = Folder(
+                    id = cursor.getDecodeString(COLUMN_FOLDER_ID).toInt(),
+                    name = cursor.getDecodeString(COLUMN_FOLDER_NAME),
+                    notes = cursor.getDecodeString(COLUMN_FOLDER_NOTES),
+                    profileImagePath = cursor.getDecodeString(COLUMN_FOLDER_PROFILE_IMAGE),
+                    backgroundImagePath = cursor.getDecodeString(COLUMN_FOLDER_BACKGROUND_IMAGE)
                 )
 
-                studentList.add(foundStudent)
+                folderList.add(foundFolder)
             } while (cursor.moveToNext())
         }
 
         cursor.close()
         db.close()
 
-        return studentList
+        return folderList
     }
 
     /**
      *
      */
-    fun findStudentById(id: Int): Student? {
+    fun findFolderById(id: Int): Folder? {
 
         // array of columns to fetch
         val columns = arrayOf(
-            COLUMN_STUDENT_ID,
-            COLUMN_STUDENT_NAME,
-            COLUMN_STUDENT_NOTES,
-            COLUMN_STUDENT_PROFILE_IMAGE,
-            COLUMN_STUDENT_BACKGROUND_IMAGE
+            COLUMN_FOLDER_ID,
+            COLUMN_FOLDER_NAME,
+            COLUMN_FOLDER_NOTES,
+            COLUMN_FOLDER_PROFILE_IMAGE,
+            COLUMN_FOLDER_BACKGROUND_IMAGE
         )
 
-        var student : Student? = null
+        var folder : Folder? = null
 
         val db = this.readableDatabase
 
         // query the user table
         val cursor = db.query(
-            TABLE_STUDENT, //Table to query
+            TABLE_FOLDER, //Table to query
             columns,            //columns to return
-            "$COLUMN_STUDENT_ID = ? ",     //columns for the WHERE clause
+            "$COLUMN_FOLDER_ID = ? ",     //columns for the WHERE clause
             arrayOf(id.toString()),  //The values for the WHERE clause
             null,      //group the rows
             null,       //filter by row groups
@@ -276,15 +276,15 @@ class DatabaseHelper(context: Context) :
 
         if (cursor.moveToFirst()) {
             do {
-                val findStudent = Student(
-                    id = cursor.getDecodeString(COLUMN_STUDENT_ID).toInt(),
-                    name = cursor.getDecodeString(COLUMN_STUDENT_NAME),
-                    notes = cursor.getDecodeString(COLUMN_STUDENT_NOTES),
-                    profileImagePath = cursor.getDecodeString(COLUMN_STUDENT_PROFILE_IMAGE),
-                    backgroundImagePath = cursor.getDecodeString(COLUMN_STUDENT_BACKGROUND_IMAGE)
+                val findFolder = Folder(
+                    id = cursor.getDecodeString(COLUMN_FOLDER_ID).toInt(),
+                    name = cursor.getDecodeString(COLUMN_FOLDER_NAME),
+                    notes = cursor.getDecodeString(COLUMN_FOLDER_NOTES),
+                    profileImagePath = cursor.getDecodeString(COLUMN_FOLDER_PROFILE_IMAGE),
+                    backgroundImagePath = cursor.getDecodeString(COLUMN_FOLDER_BACKGROUND_IMAGE)
                 )
 
-                student = findStudent
+                folder = findFolder
 
             } while (cursor.moveToNext())
         }
@@ -292,7 +292,7 @@ class DatabaseHelper(context: Context) :
         cursor.close()
         db.close()
 
-        return student
+        return folder
     }
 
     /**
@@ -311,31 +311,31 @@ class DatabaseHelper(context: Context) :
     /**
      *
      */
-    fun getAllStudentVideo(): ArrayList<Video> {
+    fun getAllFolderVideo(): ArrayList<Video> {
 
         // array of columns to fetch
         val columns = arrayOf(
-            COLUMN_STUDENT_VIDEO_ID,
-            COLUMN_STUDENT_ID,
-            COLUMN_STUDENT_VIDEO_INIT_TIME,
-            COLUMN_STUDENT_VIDEO_UPDATE_TIME,
-            COLUMN_STUDENT_VIDEO_TITLE,
-            COLUMN_STUDENT_VIDEO_CLOUD_URL,
-            COLUMN_STUDENT_VIDEO_LOCAL_URL,
-            COLUMN_STUDENT_VIDEO_NOTES,
-            COLUMN_STUDENT_VIDEO_COVER_URL,
-            COLUMN_STUDENT_VIDEO_STUDENT_NAME
+            COLUMN_FOLDER_VIDEO_ID,
+            COLUMN_FOLDER_ID,
+            COLUMN_FOLDER_VIDEO_INIT_TIME,
+            COLUMN_FOLDER_VIDEO_UPDATE_TIME,
+            COLUMN_FOLDER_VIDEO_TITLE,
+            COLUMN_FOLDER_VIDEO_CLOUD_URL,
+            COLUMN_FOLDER_VIDEO_LOCAL_URL,
+            COLUMN_FOLDER_VIDEO_NOTES,
+            COLUMN_FOLDER_VIDEO_COVER_URL,
+            COLUMN_FOLDER_VIDEO_FOLDER_NAME
         )
 
         // sorting orders
-        val sortOrder = "$COLUMN_STUDENT_VIDEO_ID DESC"
-        val studentVideoList = ArrayList<Video>()
+        val sortOrder = "$COLUMN_FOLDER_VIDEO_ID DESC"
+        val folderVideoList = ArrayList<Video>()
 
         val db = this.readableDatabase
 
         // query the user table
         val cursor = db.query(
-            TABLE_STUDENT_VIDEO, //Table to query
+            TABLE_FOLDER_VIDEO, //Table to query
             columns,            //columns to return
             null,
             null,
@@ -346,60 +346,60 @@ class DatabaseHelper(context: Context) :
 
         if (cursor.moveToFirst()) {
             do {
-                val studentV = Video(
-                    id = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_ID).toInt(),
-                    studentId = cursor.getDecodeString(COLUMN_STUDENT_ID).toInt(),
-                    initTime = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_INIT_TIME),
-                    updateTime = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_UPDATE_TIME),
-                    title = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_TITLE),
-                    cloudUrl = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_CLOUD_URL),
-                    localUrl = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_LOCAL_URL),
-                    notes = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_NOTES),
-                    coverUrl = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_COVER_URL),
-                    studentName = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_STUDENT_NAME)
+                val folderV = Video(
+                    id = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_ID).toInt(),
+                    folderId = cursor.getDecodeString(COLUMN_FOLDER_ID).toInt(),
+                    initTime = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_INIT_TIME),
+                    updateTime = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_UPDATE_TIME),
+                    title = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_TITLE),
+                    cloudUrl = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_CLOUD_URL),
+                    localUrl = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_LOCAL_URL),
+                    notes = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_NOTES),
+                    coverUrl = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_COVER_URL),
+                    folderName = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_FOLDER_NAME)
                 )
 
-                studentVideoList.add(studentV)
+                folderVideoList.add(folderV)
             } while (cursor.moveToNext())
         }
 
         cursor.close()
         db.close()
 
-        return studentVideoList
+        return folderVideoList
     }
 
     /**
      *
      */
-    fun getAllStudentVideoByStudentId(studentId: Int): ArrayList<Video> {
+    fun getAllFolderVideoByFolderId(folderId: Int): ArrayList<Video> {
 
         // array of columns to fetch
         val columns = arrayOf(
-            COLUMN_STUDENT_VIDEO_ID,
-            COLUMN_STUDENT_ID,
-            COLUMN_STUDENT_VIDEO_INIT_TIME,
-            COLUMN_STUDENT_VIDEO_UPDATE_TIME,
-            COLUMN_STUDENT_VIDEO_TITLE,
-            COLUMN_STUDENT_VIDEO_CLOUD_URL,
-            COLUMN_STUDENT_VIDEO_LOCAL_URL,
-            COLUMN_STUDENT_VIDEO_NOTES,
-            COLUMN_STUDENT_VIDEO_COVER_URL,
-            COLUMN_STUDENT_VIDEO_STUDENT_NAME
+            COLUMN_FOLDER_VIDEO_ID,
+            COLUMN_FOLDER_ID,
+            COLUMN_FOLDER_VIDEO_INIT_TIME,
+            COLUMN_FOLDER_VIDEO_UPDATE_TIME,
+            COLUMN_FOLDER_VIDEO_TITLE,
+            COLUMN_FOLDER_VIDEO_CLOUD_URL,
+            COLUMN_FOLDER_VIDEO_LOCAL_URL,
+            COLUMN_FOLDER_VIDEO_NOTES,
+            COLUMN_FOLDER_VIDEO_COVER_URL,
+            COLUMN_FOLDER_VIDEO_FOLDER_NAME
         )
 
         // sorting orders
-        val sortOrder = "$COLUMN_STUDENT_VIDEO_ID DESC"
-        val studentVideoList = ArrayList<Video>()
+        val sortOrder = "$COLUMN_FOLDER_VIDEO_ID DESC"
+        val folderVideoList = ArrayList<Video>()
 
         val db = this.readableDatabase
 
         // query the user table
         val cursor = db.query(
-            TABLE_STUDENT_VIDEO, //Table to query
+            TABLE_FOLDER_VIDEO, //Table to query
             columns,            //columns to return
-            "$COLUMN_STUDENT_ID = ? ",     //columns for the WHERE clause
-            arrayOf(studentId.toString()),  //The values for the WHERE clause
+            "$COLUMN_FOLDER_ID = ? ",     //columns for the WHERE clause
+            arrayOf(folderId.toString()),  //The values for the WHERE clause
             null,      //group the rows
             null,       //filter by row groups
             sortOrder //The sort order
@@ -407,28 +407,28 @@ class DatabaseHelper(context: Context) :
 
         if (cursor.moveToFirst()) {
             do {
-                val studentV = Video(
-                    id = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_ID).toInt(),
-                    studentId = cursor.getDecodeString(COLUMN_STUDENT_ID).toInt(),
-                    initTime = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_INIT_TIME),
-                    updateTime = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_UPDATE_TIME),
-                    title = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_TITLE),
-                    cloudUrl = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_CLOUD_URL),
-                    localUrl = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_LOCAL_URL),
-                    notes = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_NOTES),
-                    coverUrl = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_COVER_URL),
-                    studentName = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_STUDENT_NAME)
+                val folderV = Video(
+                    id = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_ID).toInt(),
+                    folderId = cursor.getDecodeString(COLUMN_FOLDER_ID).toInt(),
+                    initTime = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_INIT_TIME),
+                    updateTime = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_UPDATE_TIME),
+                    title = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_TITLE),
+                    cloudUrl = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_CLOUD_URL),
+                    localUrl = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_LOCAL_URL),
+                    notes = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_NOTES),
+                    coverUrl = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_COVER_URL),
+                    folderName = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_FOLDER_NAME)
 
                 )
 
-                studentVideoList.add(studentV)
+                folderVideoList.add(folderV)
             } while (cursor.moveToNext())
         }
 
         cursor.close()
         db.close()
 
-        return studentVideoList
+        return folderVideoList
     }
 
     /**
@@ -438,16 +438,16 @@ class DatabaseHelper(context: Context) :
 
         // array of columns to fetch
         val columns = arrayOf(
-            COLUMN_STUDENT_VIDEO_ID,
-            COLUMN_STUDENT_ID,
-            COLUMN_STUDENT_VIDEO_INIT_TIME,
-            COLUMN_STUDENT_VIDEO_UPDATE_TIME,
-            COLUMN_STUDENT_VIDEO_TITLE,
-            COLUMN_STUDENT_VIDEO_CLOUD_URL,
-            COLUMN_STUDENT_VIDEO_LOCAL_URL,
-            COLUMN_STUDENT_VIDEO_NOTES,
-            COLUMN_STUDENT_VIDEO_COVER_URL,
-            COLUMN_STUDENT_VIDEO_STUDENT_NAME
+            COLUMN_FOLDER_VIDEO_ID,
+            COLUMN_FOLDER_ID,
+            COLUMN_FOLDER_VIDEO_INIT_TIME,
+            COLUMN_FOLDER_VIDEO_UPDATE_TIME,
+            COLUMN_FOLDER_VIDEO_TITLE,
+            COLUMN_FOLDER_VIDEO_CLOUD_URL,
+            COLUMN_FOLDER_VIDEO_LOCAL_URL,
+            COLUMN_FOLDER_VIDEO_NOTES,
+            COLUMN_FOLDER_VIDEO_COVER_URL,
+            COLUMN_FOLDER_VIDEO_FOLDER_NAME
         )
 
         // sorting orders
@@ -456,9 +456,9 @@ class DatabaseHelper(context: Context) :
 
         // query the user table
         val cursor = db.query(
-            TABLE_STUDENT_VIDEO, //Table to query
+            TABLE_FOLDER_VIDEO, //Table to query
             columns,            //columns to return
-            "$COLUMN_STUDENT_VIDEO_ID = ? ",     //columns for the WHERE clause
+            "$COLUMN_FOLDER_VIDEO_ID = ? ",     //columns for the WHERE clause
             arrayOf(id.toString()),  //The values for the WHERE clause
             null,      //group the rows
             null,       //filter by row groups
@@ -468,16 +468,16 @@ class DatabaseHelper(context: Context) :
         if (cursor.moveToFirst()) {
             do {
                 video = Video(
-                    id = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_ID).toInt(),
-                    studentId = cursor.getDecodeString(COLUMN_STUDENT_ID).toInt(),
-                    initTime = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_INIT_TIME),
-                    updateTime = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_UPDATE_TIME),
-                    title = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_TITLE),
-                    cloudUrl = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_CLOUD_URL),
-                    localUrl = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_LOCAL_URL),
-                    notes = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_NOTES),
-                    coverUrl = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_COVER_URL),
-                    studentName = cursor.getDecodeString(COLUMN_STUDENT_VIDEO_STUDENT_NAME)
+                    id = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_ID).toInt(),
+                    folderId = cursor.getDecodeString(COLUMN_FOLDER_ID).toInt(),
+                    initTime = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_INIT_TIME),
+                    updateTime = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_UPDATE_TIME),
+                    title = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_TITLE),
+                    cloudUrl = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_CLOUD_URL),
+                    localUrl = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_LOCAL_URL),
+                    notes = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_NOTES),
+                    coverUrl = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_COVER_URL),
+                    folderName = cursor.getDecodeString(COLUMN_FOLDER_VIDEO_FOLDER_NAME)
                 )
             } while (cursor.moveToNext())
         }
@@ -501,7 +501,7 @@ class DatabaseHelper(context: Context) :
         val columns = arrayOf(
             COLUMN_CALENDAR_EVENT_ID,
             COLUMN_CALENDAR_EVENT_TITLE,
-            COLUMN_CALENDAR_EVENT_STUDENTS,
+            COLUMN_CALENDAR_EVENT_ATTENDANTS,
             COLUMN_CALENDAR_EVENT_LOCATION,
             COLUMN_CALENDAR_EVENT_NOTES,
             COLUMN_CALENDAR_EVENT_START_TIME,
@@ -534,7 +534,7 @@ class DatabaseHelper(context: Context) :
                 val calendarEvent = CalendarEvent(
                     id = cursor.getDecodeString(COLUMN_CALENDAR_EVENT_ID).toInt(),
                     title = cursor.getDecodeString(COLUMN_CALENDAR_EVENT_TITLE),
-                    students = cursor.getDecodeString(COLUMN_CALENDAR_EVENT_STUDENTS),
+                    attendants = cursor.getDecodeString(COLUMN_CALENDAR_EVENT_ATTENDANTS),
                     location = cursor.getDecodeString(COLUMN_CALENDAR_EVENT_LOCATION),
                     notes = cursor.getDecodeString(COLUMN_CALENDAR_EVENT_NOTES),
                     startTimeDBStr = cursor.getDecodeString(COLUMN_CALENDAR_EVENT_START_TIME),
@@ -568,7 +568,7 @@ class DatabaseHelper(context: Context) :
         // array of columns to fetch
         val columns = arrayOf(
             COLUMN_HOME_EVENT_ID,
-            COLUMN_STUDENT_ID,
+            COLUMN_FOLDER_ID,
             COLUMN_HOME_EVENT_TITLE,
             COLUMN_HOME_EVENT_NOTES,
             COLUMN_HOME_EVENT_IMAGE_URL,
@@ -598,7 +598,7 @@ class DatabaseHelper(context: Context) :
             do {
                 val homeEvent = HomeEvent(
                     id = cursor.getDecodeString(COLUMN_HOME_EVENT_ID).toInt(),
-                    studentId = cursor.getDecodeString(COLUMN_STUDENT_ID),
+                    folderId = cursor.getDecodeString(COLUMN_FOLDER_ID),
                     title = cursor.getDecodeString(COLUMN_HOME_EVENT_TITLE),
                     notes = cursor.getDecodeString(COLUMN_HOME_EVENT_NOTES),
                     imageUrl = cursor.getDecodeString(COLUMN_HOME_EVENT_IMAGE_URL),
@@ -628,12 +628,12 @@ class DatabaseHelper(context: Context) :
         // array of columns to fetch
         val columns = arrayOf(
             COLUMN_DAIRY_ID,
-            COLUMN_STUDENT_ID,
+            COLUMN_FOLDER_ID,
             COLUMN_DAIRY_INIT_TIME,
             COLUMN_DAIRY_UPDATE_TIME,
             COLUMN_DAIRY_TITLE,
             COLUMN_DAIRY_CONTENT,
-            COLUMN_DAIRY_STUDENT_NAME
+            COLUMN_DAIRY_FOLDER_NAME
         )
 
         // sorting orders
@@ -657,12 +657,12 @@ class DatabaseHelper(context: Context) :
             do {
                 val diary = Diary(
                     id = cursor.getDecodeString(COLUMN_DAIRY_ID).toInt(),
-                    studentId = cursor.getDecodeString(COLUMN_STUDENT_ID).toInt(),
+                    folderId = cursor.getDecodeString(COLUMN_FOLDER_ID).toInt(),
                     initTime = cursor.getDecodeString(COLUMN_DAIRY_INIT_TIME),
                     updateTime = cursor.getDecodeString(COLUMN_DAIRY_UPDATE_TIME),
                     title = cursor.getDecodeString(COLUMN_DAIRY_TITLE),
                     content = cursor.getDecodeString(COLUMN_DAIRY_CONTENT),
-                    studentName = cursor.getDecodeString(COLUMN_DAIRY_STUDENT_NAME)
+                    folderName = cursor.getDecodeString(COLUMN_DAIRY_FOLDER_NAME)
                 )
 
                 diaryList.add(diary)
@@ -678,17 +678,17 @@ class DatabaseHelper(context: Context) :
     /**
      *
      */
-    fun getAllDairyByStudentId(studentId: Int): ArrayList<Diary> {
+    fun getAllDairyByFolderId(folderId: Int): ArrayList<Diary> {
 
         // array of columns to fetch
         val columns = arrayOf(
             COLUMN_DAIRY_ID,
-            COLUMN_STUDENT_ID,
+            COLUMN_FOLDER_ID,
             COLUMN_DAIRY_INIT_TIME,
             COLUMN_DAIRY_UPDATE_TIME,
             COLUMN_DAIRY_TITLE,
             COLUMN_DAIRY_CONTENT,
-            COLUMN_DAIRY_STUDENT_NAME
+            COLUMN_DAIRY_FOLDER_NAME
         )
 
         // sorting orders
@@ -701,8 +701,8 @@ class DatabaseHelper(context: Context) :
         val cursor = db.query(
             TABLE_DAIRY, //Table to query
             columns,            //columns to return
-            "$COLUMN_STUDENT_ID = ? ",     //columns for the WHERE clause
-            arrayOf(studentId.toString()),  //The values for the WHERE clause
+            "$COLUMN_FOLDER_ID = ? ",     //columns for the WHERE clause
+            arrayOf(folderId.toString()),  //The values for the WHERE clause
             null,      //group the rows
             null,       //filter by row groups
             sortOrder //The sort order
@@ -712,12 +712,12 @@ class DatabaseHelper(context: Context) :
             do {
                 val diary = Diary(
                     id = cursor.getDecodeString(COLUMN_DAIRY_ID).toInt(),
-                    studentId = cursor.getDecodeString(COLUMN_STUDENT_ID).toInt(),
+                    folderId = cursor.getDecodeString(COLUMN_FOLDER_ID).toInt(),
                     initTime = cursor.getDecodeString(COLUMN_DAIRY_INIT_TIME),
                     updateTime = cursor.getDecodeString(COLUMN_DAIRY_UPDATE_TIME),
                     title = cursor.getDecodeString(COLUMN_DAIRY_TITLE),
                     content = cursor.getDecodeString(COLUMN_DAIRY_CONTENT),
-                    studentName = cursor.getDecodeString(COLUMN_DAIRY_STUDENT_NAME)
+                    folderName = cursor.getDecodeString(COLUMN_DAIRY_FOLDER_NAME)
                 )
 
                 diaryList.add(diary)
@@ -738,12 +738,12 @@ class DatabaseHelper(context: Context) :
         // array of columns to fetch
         val columns = arrayOf(
             COLUMN_DAIRY_ID,
-            COLUMN_STUDENT_ID,
+            COLUMN_FOLDER_ID,
             COLUMN_DAIRY_INIT_TIME,
             COLUMN_DAIRY_UPDATE_TIME,
             COLUMN_DAIRY_TITLE,
             COLUMN_DAIRY_CONTENT,
-            COLUMN_DAIRY_STUDENT_NAME
+            COLUMN_DAIRY_FOLDER_NAME
         )
 
         // sorting orders
@@ -766,12 +766,12 @@ class DatabaseHelper(context: Context) :
             do {
                 diary = Diary(
                     id = cursor.getDecodeString(COLUMN_DAIRY_ID).toInt(),
-                    studentId = cursor.getDecodeString(COLUMN_STUDENT_ID).toInt(),
+                    folderId = cursor.getDecodeString(COLUMN_FOLDER_ID).toInt(),
                     initTime = cursor.getDecodeString(COLUMN_DAIRY_INIT_TIME),
                     updateTime = cursor.getDecodeString(COLUMN_DAIRY_UPDATE_TIME),
                     title = cursor.getDecodeString(COLUMN_DAIRY_TITLE),
                     content = cursor.getDecodeString(COLUMN_DAIRY_CONTENT),
-                    studentName = cursor.getDecodeString(COLUMN_DAIRY_STUDENT_NAME)
+                    folderName = cursor.getDecodeString(COLUMN_DAIRY_FOLDER_NAME)
                 )
             } while (cursor.moveToNext())
         }
@@ -790,38 +790,38 @@ class DatabaseHelper(context: Context) :
     //region add record fun
 
 
-    fun addStudent(student: Student) : Long {
+    fun addFolder(folder: Folder) : Long {
 
         val db = this.writableDatabase
 
         val values = ContentValues()
-        values.addEncodeString(COLUMN_STUDENT_NAME, student.name)
-        values.addEncodeString(COLUMN_STUDENT_NOTES, student.notes)
-        values.addEncodeString(COLUMN_STUDENT_PROFILE_IMAGE, student.profileImagePath)
-        values.addEncodeString(COLUMN_STUDENT_BACKGROUND_IMAGE, student.backgroundImagePath)
+        values.addEncodeString(COLUMN_FOLDER_NAME, folder.name)
+        values.addEncodeString(COLUMN_FOLDER_NOTES, folder.notes)
+        values.addEncodeString(COLUMN_FOLDER_PROFILE_IMAGE, folder.profileImagePath)
+        values.addEncodeString(COLUMN_FOLDER_BACKGROUND_IMAGE, folder.backgroundImagePath)
 
         // Inserting Row
-        val id = db.insert(TABLE_STUDENT, null, values)
+        val id = db.insert(TABLE_FOLDER, null, values)
         db.close()
         return id
     }
 
-    fun addStudentVideo(video: Video) : Long {
+    fun addFolderVideo(video: Video) : Long {
         val db = this.writableDatabase
 
         val values = ContentValues()
-        values.addEncodeString(COLUMN_STUDENT_ID, video.studentId)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_INIT_TIME, video.initTime)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_UPDATE_TIME, video.updateTime)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_TITLE, video.title)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_CLOUD_URL, video.cloudUrl)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_LOCAL_URL, video.localUrl)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_NOTES, video.notes)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_COVER_URL, video.coverPath)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_STUDENT_NAME, video.studentName)
+        values.addEncodeString(COLUMN_FOLDER_ID, video.folderId)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_INIT_TIME, video.initTime)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_UPDATE_TIME, video.updateTime)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_TITLE, video.title)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_CLOUD_URL, video.cloudUrl)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_LOCAL_URL, video.localUrl)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_NOTES, video.notes)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_COVER_URL, video.coverPath)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_FOLDER_NAME, video.folderName)
 
         // Inserting Row
-        val id = db.insert(TABLE_STUDENT_VIDEO, null, values)
+        val id = db.insert(TABLE_FOLDER_VIDEO, null, values)
         db.close()
         return id
     }
@@ -831,7 +831,7 @@ class DatabaseHelper(context: Context) :
 
         val values = ContentValues()
         values.addEncodeString(COLUMN_CALENDAR_EVENT_TITLE, calendarEvent.title)
-        values.addEncodeString(COLUMN_CALENDAR_EVENT_STUDENTS, calendarEvent.students)
+        values.addEncodeString(COLUMN_CALENDAR_EVENT_ATTENDANTS, calendarEvent.attendants)
         values.addEncodeString(COLUMN_CALENDAR_EVENT_LOCATION, calendarEvent.location)
         values.addEncodeString(COLUMN_CALENDAR_EVENT_NOTES, calendarEvent.notes)
         values.addEncodeString(COLUMN_CALENDAR_EVENT_START_TIME, calendarEvent.startTime)
@@ -857,7 +857,7 @@ class DatabaseHelper(context: Context) :
         values.addEncodeString(COLUMN_HOME_EVENT_TYPE, homeEvent.type)
         values.addEncodeString(COLUMN_HOME_EVENT_REF_ID, homeEvent.refId)
         values.addEncodeString(COLUMN_HOME_EVENT_TIME, homeEvent.time)
-        values.addEncodeString(COLUMN_STUDENT_ID, homeEvent.studentId)
+        values.addEncodeString(COLUMN_FOLDER_ID, homeEvent.folderId)
 
         // Inserting Row
         val id = db.insert(TABLE_HOME_EVENT, null, values)
@@ -869,12 +869,12 @@ class DatabaseHelper(context: Context) :
         val db = this.writableDatabase
 
         val values = ContentValues()
-        values.addEncodeString(COLUMN_STUDENT_ID, diary.studentId)
+        values.addEncodeString(COLUMN_FOLDER_ID, diary.folderId)
         values.addEncodeString(COLUMN_DAIRY_INIT_TIME, diary.initTime)
         values.addEncodeString(COLUMN_DAIRY_UPDATE_TIME, diary.updateTime)
         values.addEncodeString(COLUMN_DAIRY_TITLE, diary.title)
         values.addEncodeString(COLUMN_DAIRY_CONTENT, diary.content)
-        values.addEncodeString(COLUMN_DAIRY_STUDENT_NAME, diary.studentName)
+        values.addEncodeString(COLUMN_DAIRY_FOLDER_NAME, diary.folderName)
 
         // Inserting Row
         val id = db.insert(TABLE_DAIRY, null, values)
@@ -887,23 +887,23 @@ class DatabaseHelper(context: Context) :
     //region update func
 
     /**
-     * This method to update student record
+     * This method to update folder record
      *
-     * @param student
+     * @param folder
      */
-    fun updateStudent(student: Student) {
+    fun updateFolder(folder: Folder) {
         val db = this.writableDatabase
 
         val values = ContentValues()
-        values.addEncodeString(COLUMN_STUDENT_NAME, student.name)
-        values.addEncodeString(COLUMN_STUDENT_NOTES, student.notes)
-        values.addEncodeString(COLUMN_STUDENT_PROFILE_IMAGE, student.profileImagePath)
-        values.addEncodeString(COLUMN_STUDENT_BACKGROUND_IMAGE, student.backgroundImagePath)
+        values.addEncodeString(COLUMN_FOLDER_NAME, folder.name)
+        values.addEncodeString(COLUMN_FOLDER_NOTES, folder.notes)
+        values.addEncodeString(COLUMN_FOLDER_PROFILE_IMAGE, folder.profileImagePath)
+        values.addEncodeString(COLUMN_FOLDER_BACKGROUND_IMAGE, folder.backgroundImagePath)
 
         // updating row
         db.update(
-            TABLE_STUDENT, values, "$COLUMN_STUDENT_ID = ?",
-            arrayOf(student.id.toString())
+            TABLE_FOLDER, values, "$COLUMN_FOLDER_ID = ?",
+            arrayOf(folder.id.toString())
         )
         db.close()
     }
@@ -912,19 +912,19 @@ class DatabaseHelper(context: Context) :
         val db = this.writableDatabase
 
         val values = ContentValues()
-        values.addEncodeString(COLUMN_STUDENT_ID, video.studentId)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_TITLE, video.title)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_INIT_TIME, video.initTime)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_UPDATE_TIME, video.updateTime)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_CLOUD_URL, video.cloudUrl)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_LOCAL_URL, video.localUrl)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_NOTES, video.notes)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_COVER_URL, video.coverPath)
-        values.addEncodeString(COLUMN_STUDENT_VIDEO_STUDENT_NAME, video.studentName)
+        values.addEncodeString(COLUMN_FOLDER_ID, video.folderId)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_TITLE, video.title)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_INIT_TIME, video.initTime)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_UPDATE_TIME, video.updateTime)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_CLOUD_URL, video.cloudUrl)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_LOCAL_URL, video.localUrl)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_NOTES, video.notes)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_COVER_URL, video.coverPath)
+        values.addEncodeString(COLUMN_FOLDER_VIDEO_FOLDER_NAME, video.folderName)
 
         // updating row
         db.update(
-            TABLE_STUDENT_VIDEO, values, "$COLUMN_STUDENT_VIDEO_ID = ?",
+            TABLE_FOLDER_VIDEO, values, "$COLUMN_FOLDER_VIDEO_ID = ?",
             arrayOf(video.id.toString())
         )
         db.close()
@@ -935,7 +935,7 @@ class DatabaseHelper(context: Context) :
 
         val values = ContentValues()
         values.addEncodeString(COLUMN_CALENDAR_EVENT_TITLE, calendarEvent.title)
-        values.addEncodeString(COLUMN_CALENDAR_EVENT_STUDENTS, calendarEvent.students)
+        values.addEncodeString(COLUMN_CALENDAR_EVENT_ATTENDANTS, calendarEvent.attendants)
         values.addEncodeString(COLUMN_CALENDAR_EVENT_LOCATION, calendarEvent.location)
         values.addEncodeString(COLUMN_CALENDAR_EVENT_NOTES, calendarEvent.notes)
         values.addEncodeString(COLUMN_CALENDAR_EVENT_START_TIME, calendarEvent.startTime)
@@ -962,7 +962,7 @@ class DatabaseHelper(context: Context) :
         values.addEncodeString(COLUMN_HOME_EVENT_TYPE, homeEvent.type)
         values.addEncodeString(COLUMN_HOME_EVENT_REF_ID, homeEvent.refId)
         values.addEncodeString(COLUMN_HOME_EVENT_TIME, homeEvent.time)
-        values.addEncodeString(COLUMN_STUDENT_ID, homeEvent.studentId)
+        values.addEncodeString(COLUMN_FOLDER_ID, homeEvent.folderId)
 
         db.update(
             TABLE_HOME_EVENT, values, "$COLUMN_HOME_EVENT_ID = ?",
@@ -975,12 +975,12 @@ class DatabaseHelper(context: Context) :
         val db = this.writableDatabase
 
         val values = ContentValues()
-        values.addEncodeString(COLUMN_STUDENT_ID, diary.studentId)
+        values.addEncodeString(COLUMN_FOLDER_ID, diary.folderId)
         values.addEncodeString(COLUMN_DAIRY_TITLE, diary.title)
         values.addEncodeString(COLUMN_DAIRY_INIT_TIME, diary.initTime)
         values.addEncodeString(COLUMN_DAIRY_UPDATE_TIME, diary.updateTime)
         values.addEncodeString(COLUMN_DAIRY_CONTENT, diary.content)
-        values.addEncodeString(COLUMN_DAIRY_STUDENT_NAME, diary.studentName)
+        values.addEncodeString(COLUMN_DAIRY_FOLDER_NAME, diary.folderName)
 
         // updating row
         db.update(
@@ -998,14 +998,14 @@ class DatabaseHelper(context: Context) :
      *
      */
     @SuppressLint("Recycle")
-    fun getLastStudentIdAuto(): Int {
+    fun getLastFolderIdAuto(): Int {
         val db = this.writableDatabase
         val query = "SELECT * FROM SQLITE_SEQUENCE"
         val cursor: Cursor = db.rawQuery(query, null)
         var num = -1
         if (cursor.moveToFirst()) {
             do {
-                if (cursor.getString((cursor.getColumnIndex("name"))) == TABLE_STUDENT) {
+                if (cursor.getString((cursor.getColumnIndex("name"))) == TABLE_FOLDER) {
                     num = cursor.getString(cursor.getColumnIndex("seq")).toInt() + 1
                     break
                 }
@@ -1019,7 +1019,7 @@ class DatabaseHelper(context: Context) :
     }
 
     /**
-     * This method to return the last student id
+     * This method to return the last folder id
      *
      */
     @SuppressLint("Recycle")
@@ -1034,7 +1034,7 @@ class DatabaseHelper(context: Context) :
                     num = cursor.getString(cursor.getColumnIndex("seq")).toInt() + 1
                     break
                 }
-                //no table student created the first one start with one
+                //no table folder created the first one start with one
                 else {
                     num = 1
                 }
@@ -1051,26 +1051,26 @@ class DatabaseHelper(context: Context) :
     /**
      * This method is to delete user record
      *
-     * @param student
+     * @param folder
      */
-    fun deleteStudent(student: Student): Boolean {
+    fun deleteFolder(folder: Folder): Boolean {
 
         val db = this.writableDatabase
         // delete user record by id
         db.delete(
-            TABLE_STUDENT, "$COLUMN_STUDENT_ID = ?",
-            arrayOf(student.id.toString())
+            TABLE_FOLDER, "$COLUMN_FOLDER_ID = ?",
+            arrayOf(folder.id.toString())
         )
         db.close()
 
         return true
     }
 
-    fun deleteStudentVideo(video: Video) {
+    fun deleteFolderVideo(video: Video) {
 
         val db = this.writableDatabase
         db.delete(
-            TABLE_STUDENT_VIDEO, "$COLUMN_STUDENT_VIDEO_ID = ?",
+            TABLE_FOLDER_VIDEO, "$COLUMN_FOLDER_VIDEO_ID = ?",
             arrayOf(video.id.toString())
         )
         db.close()

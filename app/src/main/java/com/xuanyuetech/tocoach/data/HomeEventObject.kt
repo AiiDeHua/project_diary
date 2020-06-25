@@ -33,7 +33,7 @@ interface HomeEventObject {
     fun getHomeEventInitTime() : LocalDateTime
 
     /**
-     * the student id of the home event
+     * the folder id of the home event
      */
-    fun getStudentId() : String
+    fun getFolderId() : String
 }

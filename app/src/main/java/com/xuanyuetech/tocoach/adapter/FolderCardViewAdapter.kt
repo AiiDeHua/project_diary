@@ -9,13 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xuanyuetech.tocoach.R
-import com.xuanyuetech.tocoach.data.Student
+import com.xuanyuetech.tocoach.data.Folder
 
 
 /**
- * Adapter for student card view
+ * Adapter for folder card view
  */
-class StudentCardViewAdapter(private val listStudents: ArrayList<Student>) : RecyclerView.Adapter<StudentCardViewAdapter.ViewHolder>(){
+class FolderCardViewAdapter(private val listFolders: ArrayList<Folder>) : RecyclerView.Adapter<FolderCardViewAdapter.ViewHolder>(){
 
     //private val items = DataSource.items
     private var itemClickListener: CustomOnItemClickListener? = null
@@ -37,7 +37,7 @@ class StudentCardViewAdapter(private val listStudents: ArrayList<Student>) : Rec
      * item count
      */
     override fun getItemCount(): Int {
-        return listStudents.size
+        return listFolders.size
     }
 
     /**
@@ -45,13 +45,13 @@ class StudentCardViewAdapter(private val listStudents: ArrayList<Student>) : Rec
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         
-        val imgUriStr = listStudents[position].profileImagePath
+        val imgUriStr = listFolders[position].profileImagePath
 
-        holder.imageViewCardViewStudent.setImageResource(R.drawable.profile_default)
-        if(imgUriStr.isNotBlank()) holder.imageViewCardViewStudent.setImageURI(Uri.parse(imgUriStr))
+        holder.imageViewCardViewFolder.setImageResource(R.drawable.profile_default)
+        if(imgUriStr.isNotBlank()) holder.imageViewCardViewFolder.setImageURI(Uri.parse(imgUriStr))
 
-        holder.textViewStudentCardViewName.text = listStudents[position].name
-        holder.textViewStudentCardViewNote.text = listStudents[position].notes
+        holder.textViewFolderCardViewName.text = listFolders[position].name
+        holder.textViewFolderCardViewNote.text = listFolders[position].notes
 
         holder.itemView.setOnClickListener {
             itemClickListener!!.onItemClickListener(position)
@@ -63,9 +63,9 @@ class StudentCardViewAdapter(private val listStudents: ArrayList<Student>) : Rec
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        var imageViewCardViewStudent:ImageView = view.findViewById<View>(R.id.folder_frag_cardView_img) as ImageView
-        var textViewStudentCardViewName:TextView = view.findViewById<View>(R.id.folder_frag_cardView_name) as TextView
-        var textViewStudentCardViewNote:TextView = view.findViewById<View>(R.id.folder_frag_cardView_detail) as TextView
+        var imageViewCardViewFolder:ImageView = view.findViewById<View>(R.id.folder_frag_cardView_img) as ImageView
+        var textViewFolderCardViewName:TextView = view.findViewById<View>(R.id.folder_frag_cardView_name) as TextView
+        var textViewFolderCardViewNote:TextView = view.findViewById<View>(R.id.folder_frag_cardView_detail) as TextView
 
     }
 
@@ -88,7 +88,7 @@ class StudentCardViewAdapter(private val listStudents: ArrayList<Student>) : Rec
 /**
  * infix function to set up the RecyclerView with adapter
  */
-infix fun RecyclerView.setUpWith(studentCardViewAdapter: StudentCardViewAdapter) {
+infix fun RecyclerView.setUpWith(folderCardViewAdapter: FolderCardViewAdapter) {
     layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-    adapter = studentCardViewAdapter
+    adapter = folderCardViewAdapter
 }

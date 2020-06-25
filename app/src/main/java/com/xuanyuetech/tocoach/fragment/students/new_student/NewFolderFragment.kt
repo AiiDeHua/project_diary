@@ -1,4 +1,4 @@
-package com.xuanyuetech.tocoach.fragment.students.new_student
+package com.xuanyuetech.tocoach.fragment.folders.new_folder
 
 import android.app.Activity
 import android.content.Intent
@@ -16,15 +16,15 @@ import com.xuanyuetech.tocoach.R
 import com.xuanyuetech.tocoach.data.DataHelper
 import com.xuanyuetech.tocoach.data.DatabaseHelper
 import com.xuanyuetech.tocoach.data.GlobalVariable
-import com.xuanyuetech.tocoach.data.Student
+import com.xuanyuetech.tocoach.data.Folder
 import com.xuanyuetech.tocoach.fragment.BasicFragment
 import com.xuanyuetech.tocoach.util.*
 import de.hdodenhof.circleimageview.CircleImageView
 
 /**
- * new student fragment
+ * new folder fragment
  */
-class NewStudentFragment : BasicFragment() {
+class NewFolderFragment : BasicFragment() {
 
     //region properties
     private lateinit var databaseHelper: DatabaseHelper
@@ -46,13 +46,13 @@ class NewStudentFragment : BasicFragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_new_student, container, false)
+        mView = inflater.inflate(R.layout.fragment_new_folder, container, false)
 
         initView()
 
         databaseHelper = DatabaseHelper(activity!!)
 
-        setUpToolBarTitle(resources.getString(R.string.newStudentActivity_newStudentFrag_title))
+        setUpToolBarTitle(resources.getString(R.string.newFolderActivity_newFolderFrag_title))
 
         initData()
 
@@ -68,17 +68,17 @@ class NewStudentFragment : BasicFragment() {
      * init views
      */
     private fun initView(){
-        textInputEditTextName = mView.findViewById(R.id.editText_student_name)
-        textInputEditTextNotes = mView.findViewById(R.id.editText_student_note)
-        textInputEditTextName.setMaxLength(Student().maxNameLength)
-        imageView = mView.findViewById(R.id.imageView_studentImage)
+        textInputEditTextName = mView.findViewById(R.id.editText_folder_name)
+        textInputEditTextNotes = mView.findViewById(R.id.editText_folder_note)
+        textInputEditTextName.setMaxLength(Folder().maxNameLength)
+        imageView = mView.findViewById(R.id.imageView_folderImage)
     }
 
     /**
      * init data
      */
     private fun initData(){
-        mView.findViewById<EditText>(R.id.editText_student_note).setText("新的视频夹")
+        mView.findViewById<EditText>(R.id.editText_folder_note).setText("新的日志库")
     }
 
     /**
@@ -87,14 +87,14 @@ class NewStudentFragment : BasicFragment() {
     private fun initListeners() {
 
         //confirm button
-        val buttonAdd = mView.findViewById<Button>(R.id.btn_add_new_student)
+        val buttonAdd = mView.findViewById<Button>(R.id.btn_add_new_folder)
         buttonAdd.setOnClickListener{
 
-            val student = createStudent()
-            if(!student.name.isBlank()){
-                DataHelper().addStudent(student, databaseHelper)
-                Toast.makeText(context,"成功创建新的学员!",Toast.LENGTH_SHORT).show()
-                activity?.setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+            val folder = createFolder()
+            if(!folder.name.isBlank()){
+                DataHelper().addFolder(folder, databaseHelper)
+                Toast.makeText(context,"成功创建新的日志库!",Toast.LENGTH_SHORT).show()
+                activity?.setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
                 activity?.finish()
             }else{
                 //invalid name
@@ -102,9 +102,9 @@ class NewStudentFragment : BasicFragment() {
             }
         }
 
-        //student image view
-        val studentImageView = mView.findViewById<CircleImageView>(R.id.imageView_studentImage)
-        studentImageView.setOnClickListener{
+        //folder image view
+        val folderImageView = mView.findViewById<CircleImageView>(R.id.imageView_folderImage)
+        folderImageView.setOnClickListener{
             if(isValidClick()){
                 ImagePicker.with(this)
                     .crop(1f,1f)	    			//Crop image(Optional), Check Customization for more option
@@ -117,20 +117,20 @@ class NewStudentFragment : BasicFragment() {
     }
 
     /**
-     * create the student
+     * create the folder
      */
-    private fun createStudent() : Student{
-        val studentName = textInputEditTextName.text.toString()
-        val studentNotes = textInputEditTextNotes.text.toString()
-        val studentId = databaseHelper.getLastStudentIdAuto()
+    private fun createFolder() : Folder{
+        val folderName = textInputEditTextName.text.toString()
+        val folderNotes = textInputEditTextNotes.text.toString()
+        val folderId = databaseHelper.getLastFolderIdAuto()
 
-        val studentImagePath = ImageUtil.saveStudentProfileImage(imageUri, studentId, context!!)
+        val folderImagePath = ImageUtil.saveFolderProfileImage(imageUri, folderId, context!!)
 
-        return Student(
-            studentId,
-            studentName,
-            studentNotes,
-            studentImagePath,
+        return Folder(
+            folderId,
+            folderName,
+            folderNotes,
+            folderImagePath,
             backgroundImagePath = ""
         )
     }

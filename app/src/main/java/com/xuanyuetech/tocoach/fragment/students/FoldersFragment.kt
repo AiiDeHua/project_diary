@@ -1,4 +1,4 @@
-package com.xuanyuetech.tocoach.fragment.students
+package com.xuanyuetech.tocoach.fragment.folders
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,22 +7,22 @@ import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.xuanyuetech.tocoach.R
-import com.xuanyuetech.tocoach.adapter.StudentCardViewAdapter
+import com.xuanyuetech.tocoach.adapter.FolderCardViewAdapter
 import com.xuanyuetech.tocoach.adapter.setUpWith
 import com.xuanyuetech.tocoach.data.DatabaseHelper
-import com.xuanyuetech.tocoach.data.Student
+import com.xuanyuetech.tocoach.data.Folder
 import com.xuanyuetech.tocoach.fragment.BasicFragment
 import com.xuanyuetech.tocoach.util.ActivityUtil
 
 /**
- * students fragment
+ * folders fragment
  */
-class StudentsFragment : BasicFragment() {
+class FoldersFragment : BasicFragment() {
 
     //region properties
 
-    private lateinit var listStudents: ArrayList<Student>
-    private var studentCardViewAdapter: StudentCardViewAdapter? = null
+    private lateinit var listFolders: ArrayList<Folder>
+    private var folderCardViewAdapter: FolderCardViewAdapter? = null
     private lateinit var databaseHelper: DatabaseHelper
     private val handler = Handler()
 
@@ -33,7 +33,7 @@ class StudentsFragment : BasicFragment() {
     //region onCreateView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        mView =  inflater.inflate(R.layout.fragment_students, container, false)
+        mView =  inflater.inflate(R.layout.fragment_folders, container, false)
 
         databaseHelper = DatabaseHelper(activity!!)
 
@@ -41,7 +41,7 @@ class StudentsFragment : BasicFragment() {
 
         initData()
 
-        refreshStudents()
+        refreshFolders()
 
         return mView
     }
@@ -51,14 +51,14 @@ class StudentsFragment : BasicFragment() {
     //region override
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.toolbar_students, menu)
+        inflater.inflate(R.menu.toolbar_folders, menu)
     }
 
     override fun onOptionsItemSelected(item:MenuItem) :Boolean {
         if(isValidClick()) {
             when(item.itemId){
-                R.id.menuItem_home_add_new_student->{
-                    ActivityUtil.startCreateNewStudent(this)
+                R.id.menuItem_home_add_new_folder->{
+                    ActivityUtil.startCreateNewFolder(this)
                 }
                 R.id.menuItem_search -> {
                     ActivityUtil.startSearch(this)
@@ -80,23 +80,23 @@ class StudentsFragment : BasicFragment() {
      *
      */
     private fun initData() {
-        listStudents = ArrayList()
+        listFolders = ArrayList()
     }
 
     private fun initView(){
-        sizeLabelView = mView.findViewById(R.id.textView_student_label)
+        sizeLabelView = mView.findViewById(R.id.textView_folder_label)
     }
 
     /**
      * Setup the CardView
      */
     private fun bindAdapter(){
-        studentCardViewAdapter = StudentCardViewAdapter(listStudents)
-        studentCardViewAdapter!!.setOnItemClickListener(
-            object : StudentCardViewAdapter.CustomOnItemClickListener {
+        folderCardViewAdapter = FolderCardViewAdapter(listFolders)
+        folderCardViewAdapter!!.setOnItemClickListener(
+            object : FolderCardViewAdapter.CustomOnItemClickListener {
                 override fun onItemClickListener(position: Int) {
                     if(isValidClick()){
-                        ActivityUtil.startStudent(this@StudentsFragment, listStudents[position].id)
+                        ActivityUtil.startFolder(this@FoldersFragment, listFolders[position].id)
                     }
                 }
             })
@@ -104,29 +104,29 @@ class StudentsFragment : BasicFragment() {
         //set up the adapter for the recycler
         val recyclerView : RecyclerView = mView.findViewById(R.id.recycler_view)
 
-        recyclerView.setUpWith(studentCardViewAdapter!!)
+        recyclerView.setUpWith(folderCardViewAdapter!!)
     }
 
     /**
-     * refresh all student list
+     * refresh all folder list
      */
-    fun refreshStudents(){
+    fun refreshFolders(){
         handler.post{
-            if(studentCardViewAdapter == null) bindAdapter()
-            listStudents.clear()
-            listStudents.addAll(databaseHelper.getAllStudent().sortedBy { it.name })
-            studentCardViewAdapter!!.notifyDataSetChanged()
-            refreshStudentNumTextView()
+            if(folderCardViewAdapter == null) bindAdapter()
+            listFolders.clear()
+            listFolders.addAll(databaseHelper.getAllFolder().sortedBy { it.name })
+            folderCardViewAdapter!!.notifyDataSetChanged()
+            refreshFolderNumTextView()
         }
     }
 
     /**
-     * refresh student number text view
+     * refresh folder number text view
      */
     @SuppressLint("SetTextI18n")
-    private fun refreshStudentNumTextView(){
-        if(listStudents.size <= 0 ) sizeLabelView.text = "赶紧点击右上角\"+\"添加新的学员吧！"
-        else{sizeLabelView.text = "已有 ${listStudents.size} 位学员"}
+    private fun refreshFolderNumTextView(){
+        if(listFolders.size <= 0 ) sizeLabelView.text = "赶紧点击右上角\"+\"添加新的日志库吧！"
+        else{sizeLabelView.text = "已有 ${listFolders.size} 个日志库"}
     }
 
 

@@ -14,12 +14,10 @@ import com.xuanyuetech.tocoach.fragment.BasicFragment
 import com.xuanyuetech.tocoach.fragment.account.AccountFragment
 import com.xuanyuetech.tocoach.fragment.calendar.CalendarFragment
 import com.xuanyuetech.tocoach.fragment.home.HomeFragment
-import com.xuanyuetech.tocoach.fragment.students.StudentsFragment
+import com.xuanyuetech.tocoach.fragment.folders.FoldersFragment
 import com.xuanyuetech.tocoach.util.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
-import java.io.BufferedReader
-import java.io.InputStreamReader
 
 /**
  * main start activity
@@ -28,7 +26,7 @@ class MainActivity : BasicActivity() {
 
     //region properties
     private lateinit var homeFragment : HomeFragment
-    private lateinit var studentsFragment : StudentsFragment
+    private lateinit var foldersFragment : FoldersFragment
     private lateinit var calendarFragment : CalendarFragment
     private lateinit var accountFragment : AccountFragment
     private lateinit var activeFrag : BasicFragment
@@ -115,11 +113,11 @@ class MainActivity : BasicActivity() {
             edit.putBoolean(getString(R.string.pref_previously_started), java.lang.Boolean.TRUE)
             edit.apply()
 
-            //student example
+            //folder example
             val profileImagePath = PathUtil.getPathFromRaw(R.raw.example_logo_small)
             val profileBackgroundPath = PathUtil.getPathFromRaw(R.raw.example_logo_background)
-            val savedProfileImagePath = ImageUtil.saveStudentProfileImage(Uri.parse(profileImagePath), 1, this)
-            val savedProfileBackgroundPath = ImageUtil.saveStudentBackgroundImage(Uri.parse(profileBackgroundPath), 1, this)
+            val savedProfileImagePath = ImageUtil.saveFolderProfileImage(Uri.parse(profileImagePath), 1, this)
+            val savedProfileBackgroundPath = ImageUtil.saveFolderBackgroundImage(Uri.parse(profileBackgroundPath), 1, this)
 
             //diary example
             val diaryImagePath = PathUtil.getPathFromRaw(R.raw.diary_example_image)
@@ -133,20 +131,20 @@ class MainActivity : BasicActivity() {
             val resourceId = this.resources.getIdentifier("example_video","raw",this.packageName)
             val videoPath = "rawresource:///$resourceId"
 
-            val student = Student()
-            student.name = "小明(案例)"
-            student.notes = "优秀学员代表"
-            student.profileImagePath = savedProfileImagePath
-            student.backgroundImagePath = savedProfileBackgroundPath
-            DataHelper().addStudent(student,databaseHelper)
+            val folder = Folder()
+            folder.name = "小明(案例)"
+            folder.notes = "案例日志库"
+            folder.profileImagePath = savedProfileImagePath
+            folder.backgroundImagePath = savedProfileBackgroundPath
+            DataHelper().addFolder(folder,databaseHelper)
 
-            val diary = Diary(student.id, LocalDateTime.now(), student.name)
+            val diary = Diary(folder.id, LocalDateTime.now(), folder.name)
             diary.title = "文本日志"
             diary.content = diaryContent
             DataHelper().addDairy(diary,databaseHelper)
 
             val video = Video(
-                studentId = student.id,
+                folderId = folder.id,
                 initTime = LocalDateTime.now(),
                 title = "视频日志",
                 cloudUrl = "",
@@ -158,14 +156,14 @@ class MainActivity : BasicActivity() {
                         "5. 所有视频或文本资料都只存在于本地，且未分享的视频在相册中不可见。\n\n" +
                         "6. 我们正在研发多视频拼接、云端存储等更多的功能，敬请期待",
                 coverUrl = videoCoverPath,
-                studentName = student.name
+                folderName = folder.name
                 )
             DataHelper().addVideo(video, databaseHelper)
 
             //calendarEvent
             val calendarEvent = CalendarEvent(LocalDate.now().plusDays(1))
             calendarEvent.title = "课程示例"
-            calendarEvent.students = "点击右上角“+”添加课程!"
+            calendarEvent.attendants = "点击右上角“+”添加课程!"
             calendarEvent.notes = "赶紧试试添加课程吧！"
             databaseHelper.addCalendarEvent(calendarEvent)
         }
@@ -182,19 +180,19 @@ class MainActivity : BasicActivity() {
      */
     private fun initBottomBar() {
         homeFragment = HomeFragment()
-        studentsFragment = StudentsFragment()
+        foldersFragment = FoldersFragment()
         calendarFragment = CalendarFragment()
         accountFragment = AccountFragment()
-        activeFrag = studentsFragment
+        activeFrag = foldersFragment
 
         supportFragmentManager.beginTransaction().add(R.id.nav_host_fragment, homeFragment).hide(homeFragment).commit()
-        supportFragmentManager.beginTransaction().add(R.id.nav_host_fragment, studentsFragment).hide(homeFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.nav_host_fragment, foldersFragment).hide(homeFragment).commit()
         supportFragmentManager.beginTransaction().add(R.id.nav_host_fragment, calendarFragment).hide(calendarFragment).commit()
         supportFragmentManager.beginTransaction().add(R.id.nav_host_fragment, accountFragment).hide(accountFragment).commit()
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomBar_home)
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
-        bottomNavigation.selectedItemId = R.id.nav_main_students
+        bottomNavigation.selectedItemId = R.id.nav_main_folders
     }
 
     //override the default listener
@@ -206,10 +204,10 @@ class MainActivity : BasicActivity() {
                 findViewById<TextView>(R.id.toolbar_title).text = getString(R.string.mainActivity_homeFrag_title)
                 true
             }
-            R.id.nav_main_students->{
-                supportFragmentManager.beginTransaction().hide(activeFrag).show(studentsFragment).commit()
-                activeFrag = studentsFragment
-                findViewById<TextView>(R.id.toolbar_title).text = getString(R.string.mainActivity_studentsFrag_title)
+            R.id.nav_main_folders->{
+                supportFragmentManager.beginTransaction().hide(activeFrag).show(foldersFragment).commit()
+                activeFrag = foldersFragment
+                findViewById<TextView>(R.id.toolbar_title).text = getString(R.string.mainActivity_foldersFrag_title)
                 true
             }
             R.id.nav_main_calendar->{
@@ -234,9 +232,9 @@ class MainActivity : BasicActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(resultCode == GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST){
+        if(resultCode == GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST){
             homeFragment.refreshViews()
-            studentsFragment.refreshStudents()
+            foldersFragment.refreshFolders()
         }
     }
 

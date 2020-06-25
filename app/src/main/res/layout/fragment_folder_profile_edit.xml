@@ -35,7 +35,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/imageView_studentImage"
+                        android:id="@+id/imageView_folderImage"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:clickable="true"
@@ -77,7 +77,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="姓名"
+                    android:text="名称"
                     android:textSize="18sp"
                     android:padding="10dp"
                     app:layout_constraintTop_toTopOf="parent"

@@ -19,7 +19,7 @@ import com.xuanyuetech.tocoach.R
 import com.xuanyuetech.tocoach.adapter.ViewPagerVideoEditorAdapter
 import com.xuanyuetech.tocoach.data.DatabaseHelper
 import com.xuanyuetech.tocoach.data.GlobalVariable
-import com.xuanyuetech.tocoach.data.Student
+import com.xuanyuetech.tocoach.data.Folder
 import com.xuanyuetech.tocoach.data.Video
 import com.xuanyuetech.tocoach.fragment.video_player.VideoPlayerInfoEditFragment
 import com.xuanyuetech.tocoach.fragment.video_player.VideoPlayerInfoFragment
@@ -42,7 +42,7 @@ class VideoPlayerActivity : BasicActivity(){
 
     //data
     private var video : Video? = null
-    private var student : Student? = null
+    private var folder : Folder? = null
 
     private lateinit var databaseHelper : DatabaseHelper
 
@@ -54,7 +54,7 @@ class VideoPlayerActivity : BasicActivity(){
 
     //video information view
     private lateinit var videoTimeView : TextView
-    private lateinit var studentNameView : TextView
+    private lateinit var folderNameView : TextView
 
     //viewPager
     private lateinit var videoPlayerInfoFragment : VideoPlayerInfoFragment
@@ -108,7 +108,7 @@ class VideoPlayerActivity : BasicActivity(){
         fullscreenButton = playerView.findViewById(R.id.exo_fullscreen_icon)
         videoToolbar = findViewById(R.id.video_player_tool_bar)
         videoTimeView = findViewById(R.id.textView_videoPlayer_time)
-        studentNameView = findViewById(R.id.textView_videoPlayer_studentName)
+        folderNameView = findViewById(R.id.textView_videoPlayer_folderName)
         viewPager = findViewById(R.id.video_player_view_pager)
 
         videoToolbar.title = ""
@@ -123,16 +123,16 @@ class VideoPlayerActivity : BasicActivity(){
 
         databaseHelper = DatabaseHelper(this)
         video = databaseHelper.findVideoByIdFromID(videoId)
-        student = databaseHelper.findStudentById(video!!.studentId)
+        folder = databaseHelper.findFolderById(video!!.folderId)
 
-        if(video == null || student == null){
+        if(video == null || folder == null){
             Toast.makeText(this, "视频地址错误", Toast.LENGTH_SHORT).show()
             finish()
         }
 
         //texts
         videoTimeView.text = video!!.initTime
-        studentNameView.text = student!!.name
+        folderNameView.text = folder!!.name
 
         //get video size
         val videoSize = VideoUtil.getSizeOfVideo(video!!.localUrl, this)
@@ -408,7 +408,7 @@ class VideoPlayerActivity : BasicActivity(){
             viewPager.currentItem = 0
 
             //have edit, need refresh lists
-            setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+            setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
         }else{
             //should release the file before finish the activity
             player.stop()

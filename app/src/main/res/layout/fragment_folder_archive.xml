@@ -86,7 +86,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <TextView
-            android:id="@+id/student_archive_search_hint"
+            android:id="@+id/folder_archive_search_hint"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:gravity="center"
@@ -103,7 +103,7 @@
             />
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/student_archive_nested_scroll_view"
+        android:id="@+id/folder_archive_nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
@@ -114,7 +114,7 @@
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/student_archive_recycler_view"
+                    android:id="@+id/folder_archive_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 </androidx.recyclerview.widget.RecyclerView>
@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="80dp"
-                    android:text="学员数量:"
+                    android:text="日志库数量:"
                     android:textSize="15sp"
                     android:gravity="center" />
 
@@ -151,7 +151,7 @@
         app:title="">
 
         <EditText
-            android:id="@+id/student_archive_search_edit_text"
+            android:id="@+id/folder_archive_search_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
@@ -202,7 +202,7 @@
             app:fab_colorPressed="@color/color_videoEditor_fab_button_pressed"
             app:fab_icon="@drawable/ic_gallery"
             app:fab_size="mini"
-            app:fab_title="@string/studentActivity_studentArchiveFrag_pickFromGallery" />
+            app:fab_title="@string/folderActivity_folderArchiveFrag_pickFromGallery" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/diary_fab"
@@ -212,7 +212,7 @@
             app:fab_colorPressed="@color/color_videoEditor_fab_button_pressed"
             app:fab_icon="@drawable/ic_diary"
             app:fab_size="mini"
-            app:fab_title="@string/studentActivity_studentArchiveFrag_diary" />
+            app:fab_title="@string/folderActivity_folderArchiveFrag_diary" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

@@ -3,9 +3,9 @@ package com.xuanyuetech.tocoach.data
 import org.threeten.bp.LocalDateTime
 
 /**
- * student archive object interface
+ * folder archive object interface
  */
-interface StudentArchiveObject {
+interface FolderArchiveObject {
 
     /**
      * get the title of the archive
@@ -23,9 +23,9 @@ interface StudentArchiveObject {
     fun getArchiveSubtitle() : String
 
     /**
-     * show the student name
+     * show the folder name
      */
-    fun getArchiveStudentName() : String
+    fun getArchiveFolderName() : String
 
     /**
      * get the update time for sort

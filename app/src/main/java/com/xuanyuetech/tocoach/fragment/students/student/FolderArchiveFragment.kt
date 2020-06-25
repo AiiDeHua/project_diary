@@ -1,4 +1,4 @@
-package com.xuanyuetech.tocoach.fragment.students.student
+package com.xuanyuetech.tocoach.fragment.folders.folder
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -31,7 +31,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.Behavior.DragCallback
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.xuanyuetech.tocoach.R
-import com.xuanyuetech.tocoach.adapter.StudentListCardViewAdapter
+import com.xuanyuetech.tocoach.adapter.FolderListCardViewAdapter
 import com.xuanyuetech.tocoach.adapter.setUpWith
 import com.xuanyuetech.tocoach.data.*
 import com.xuanyuetech.tocoach.fragment.BasicFragment
@@ -44,9 +44,9 @@ import kotlin.math.abs
 
 
 /**
- * Student archive fragment
+ * Folder archive fragment
  */
-class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
+class FolderArchiveFragment : BasicFragment(), OnOffsetChangedListener {
 
     //region properties
 
@@ -66,18 +66,18 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
     //data
     private lateinit var videoList: ArrayList<Video>
     private lateinit var diaryList : ArrayList<Diary>
-    private lateinit var studentArchiveObjectList : ArrayList<StudentArchiveObject>
-    private lateinit var student: Student
+    private lateinit var folderArchiveObjectList : ArrayList<FolderArchiveObject>
+    private lateinit var folder: Folder
     private lateinit var databaseHelper: DatabaseHelper
-    private var studentId = -1
+    private var folderId = -1
 
     //object recyclerView
     private lateinit var recyclerView : RecyclerView
 
-    private lateinit var studentBackgroundImageView : ImageView
+    private lateinit var folderBackgroundImageView : ImageView
     private lateinit var profileImageView : CircleImageView
-    private lateinit var studentNameView : TextView
-    private lateinit var studentNotesView : TextView
+    private lateinit var folderNameView : TextView
+    private lateinit var folderNotesView : TextView
     private lateinit var endTextView : TextView
     private lateinit var appBarLayout:AppBarLayout
     private lateinit var searchInputEditText: EditText
@@ -90,7 +90,7 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
 
     private var isInFilter = false
 
-    private lateinit var studentArchiveCardViewAdapter: StudentListCardViewAdapter
+    private lateinit var folderArchiveCardViewAdapter: FolderListCardViewAdapter
 
     private var sortStrategy = SortStrategy.ByInitTime
     enum class SortStrategy{
@@ -109,7 +109,7 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
         savedInstanceState: Bundle?
     ): View {
 
-        mView = inflater.inflate(R.layout.fragment_student_archive, container, false)
+        mView = inflater.inflate(R.layout.fragment_folder_archive, container, false)
 
         initData()
 
@@ -133,25 +133,25 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
      * init data
      */
     private fun initData() {
-        studentId = ActivityUtil.getStudentIdFromIntent(activity!!.intent)
+        folderId = ActivityUtil.getFolderIdFromIntent(activity!!.intent)
 
         databaseHelper = DatabaseHelper(context!!)
 
-        student = databaseHelper.findStudentById(studentId)!!
+        folder = databaseHelper.findFolderById(folderId)!!
 
         videoList = ArrayList()
         diaryList = ArrayList()
-        studentArchiveObjectList = ArrayList()
+        folderArchiveObjectList = ArrayList()
     }
 
     /**
      * init views
      */
     private fun initView(){
-        studentBackgroundImageView = mView.findViewById(R.id.imageview_placeholder)
+        folderBackgroundImageView = mView.findViewById(R.id.imageview_placeholder)
 
-        studentNameView = mView.findViewById(R.id.info_name)
-        studentNotesView = mView.findViewById(R.id.info_notes)
+        folderNameView = mView.findViewById(R.id.info_name)
+        folderNotesView = mView.findViewById(R.id.info_notes)
         profileImageView = mView.findViewById(R.id.profile_image)
         endTextView = mView.findViewById(R.id.textView_end_label)
 
@@ -162,8 +162,8 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
 
         //collapsing toolbar listeners
         appBarLayout.addOnOffsetChangedListener(this)
-        scrollView = mView.findViewById(R.id.student_archive_nested_scroll_view)
-        searchHint = mView.findViewById(R.id.student_archive_search_hint)
+        scrollView = mView.findViewById(R.id.folder_archive_nested_scroll_view)
+        searchHint = mView.findViewById(R.id.folder_archive_search_hint)
 
         searchHint.setOnClickListener{startEditSearch()}
         initSearchInputBox()
@@ -173,7 +173,7 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
      * init search input editText
      */
     private fun initSearchInputBox(){
-        searchInputEditText = mView.findViewById(R.id.student_archive_search_edit_text)
+        searchInputEditText = mView.findViewById(R.id.folder_archive_search_edit_text)
 
         searchInputEditText.addTextChangedListener(object :TextWatcher{
             override fun afterTextChanged(s: Editable?) {
@@ -253,26 +253,26 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
     private fun refreshViews(){
         handler.post {
 
-            studentArchiveCardViewAdapter.filter.filter(searchInputEditText.text.toString())
+            folderArchiveCardViewAdapter.filter.filter(searchInputEditText.text.toString())
 
-            studentArchiveCardViewAdapter.notifyDataSetChanged()
+            folderArchiveCardViewAdapter.notifyDataSetChanged()
 
-            studentNameView.text = student.name
-            studentNotesView.text = student.notes
+            folderNameView.text = folder.name
+            folderNotesView.text = folder.notes
 
-            if (student.backgroundImagePath.isNotBlank())
-                studentBackgroundImageView.setImageURI(Uri.parse(student.backgroundImagePath))
-            else studentBackgroundImageView.setImageResource(R.drawable.logo)
+            if (folder.backgroundImagePath.isNotBlank())
+                folderBackgroundImageView.setImageURI(Uri.parse(folder.backgroundImagePath))
+            else folderBackgroundImageView.setImageResource(R.drawable.logo)
 
-            if (student.profileImagePath.isNotBlank())
-                profileImageView.setImageURI( Uri.parse( student.profileImagePath))
+            if (folder.profileImagePath.isNotBlank())
+                profileImageView.setImageURI( Uri.parse( folder.profileImagePath))
             else profileImageView.setImageResource(R.drawable.profile_default)
 
-            if (studentArchiveObjectList.size <= 0) {
-                endTextView.text = "赶紧给学员添加新的视频和文本日志吧！"
+            if (folderArchiveObjectList.size <= 0) {
+                endTextView.text = "赶紧给添加新的视频和文本日志吧！"
             } else {
-                val videoSize = studentArchiveCardViewAdapter.filterStudentArchiveObjectList.count { it is Video }
-                val diarySize = studentArchiveCardViewAdapter.filterStudentArchiveObjectList.count { it is Diary }
+                val videoSize = folderArchiveCardViewAdapter.filterFolderArchiveObjectList.count { it is Video }
+                val diarySize = folderArchiveCardViewAdapter.filterFolderArchiveObjectList.count { it is Diary }
                 if(isInFilter){
                     if(videoSize == 0 && diarySize == 0){
                         endTextView.text = "未找到任何日志"
@@ -280,7 +280,7 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
                         endTextView.text = "当前检索下有 $videoSize 个视频日志和 $diarySize 个文本日志"
                     }
                 }else{
-                    endTextView.text = "该学员总共有 $videoSize 个视频日志和 $diarySize 个文本日志"
+                    endTextView.text = "总共有 $videoSize 个视频日志和 $diarySize 个文本日志"
                 }
             }
         }
@@ -292,29 +292,29 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
     private fun refreshItemList(){
         videoList.clear()
         diaryList.clear()
-        studentArchiveObjectList.clear()
+        folderArchiveObjectList.clear()
 
-        videoList.addAll(databaseHelper.getAllStudentVideoByStudentId(studentId))
-        diaryList.addAll(databaseHelper.getAllDairyByStudentId(studentId))
+        videoList.addAll(databaseHelper.getAllFolderVideoByFolderId(folderId))
+        diaryList.addAll(databaseHelper.getAllDairyByFolderId(folderId))
 
-        val unSortedList = ArrayList<StudentArchiveObject>()
+        val unSortedList = ArrayList<FolderArchiveObject>()
         unSortedList.addAll(videoList)
         unSortedList.addAll(diaryList)
 
         //different soring strategies
         when(sortStrategy){
             SortStrategy.ByInitTime ->{
-                studentArchiveObjectList.addAll(unSortedList.sortedByDescending {
+                folderArchiveObjectList.addAll(unSortedList.sortedByDescending {
                     it.getArchiveInitTime()
                 })
             }
             SortStrategy.ByUpdateTime ->{
-                studentArchiveObjectList.addAll(unSortedList.sortedByDescending {
+                folderArchiveObjectList.addAll(unSortedList.sortedByDescending {
                     it.getArchiveUpdateTime()
                 })
             }
             SortStrategy.ByTitle ->{
-                studentArchiveObjectList.addAll( unSortedList.sortedBy {
+                folderArchiveObjectList.addAll( unSortedList.sortedBy {
                     it.getArchiveTitle()
                 })
             }
@@ -325,19 +325,19 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
      * Setup the CardView
      */
     private fun setUpCardView() {
-            studentArchiveObjectList = ArrayList()
+            folderArchiveObjectList = ArrayList()
 
-            studentArchiveCardViewAdapter = StudentListCardViewAdapter(studentArchiveObjectList)
-            studentArchiveCardViewAdapter.setOnItemClickListener(
-                object : StudentListCardViewAdapter.CustomOnItemClickListener {
+            folderArchiveCardViewAdapter = FolderListCardViewAdapter(folderArchiveObjectList)
+            folderArchiveCardViewAdapter.setOnItemClickListener(
+                object : FolderListCardViewAdapter.CustomOnItemClickListener {
                     override fun onItemClickListener(position: Int) {
                         if(isValidClick()) {
-                            val item = studentArchiveCardViewAdapter.filterStudentArchiveObjectList[position]
+                            val item = folderArchiveCardViewAdapter.filterFolderArchiveObjectList[position]
 
                             if (item is Video) {
-                                ActivityUtil.startVideoPlayer(this@StudentArchiveFragment, item.id)
+                                ActivityUtil.startVideoPlayer(this@FolderArchiveFragment, item.id)
                             } else if (item is Diary) {
-                                ActivityUtil.startDairy(this@StudentArchiveFragment, item.id, studentId)
+                                ActivityUtil.startDairy(this@FolderArchiveFragment, item.id, folderId)
                             }
                         }
                     }
@@ -345,8 +345,8 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
             )
 
             //set up recyclerView
-            recyclerView = mView.findViewById(R.id.student_archive_recycler_view)
-            recyclerView.setUpWith(studentArchiveCardViewAdapter)
+            recyclerView = mView.findViewById(R.id.folder_archive_recycler_view)
+            recyclerView.setUpWith(folderArchiveCardViewAdapter)
 
     }
 
@@ -379,14 +379,14 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
      * start new diary activity
      */
     private fun startNewDairyActivity(){
-        ActivityUtil.startDairy(this, -1, studentId)
+        ActivityUtil.startDairy(this, -1, folderId)
     }
 
     /**
      * start new editor
      */
     private fun startNewEditorActivity(uri: Uri) {
-        ActivityUtil.startNewVideoEditor(this, studentId, uri)
+        ActivityUtil.startNewVideoEditor(this, folderId, uri)
     }
 
     /**
@@ -461,13 +461,13 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
                     Toast.makeText(context, R.string.toast_cannot_retrieve_selected_video, Toast.LENGTH_SHORT).show()
                 }
             }
-        }else if(resultCode == GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST) {
-            student = databaseHelper.findStudentById(studentId)!!
+        }else if(resultCode == GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST) {
+            folder = databaseHelper.findFolderById(folderId)!!
             refreshItemList()
             refreshViews()
-            activity!!.setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
-        }else if(resultCode == GlobalVariable().RESULT_DELETE_STUDENT){
-            activity!!.setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+            activity!!.setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+        }else if(resultCode == GlobalVariable().RESULT_DELETE_FOLDER){
+            activity!!.setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
             activity!!.finish()
         }
     }
@@ -489,21 +489,21 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
 
     override fun customizeToolbar() {
 
-        mTitle.text = student.name
+        mTitle.text = folder.name
         startAlphaAnimation(mTitle, 0, View.INVISIBLE)
 
         val toolbar = mView.findViewById<Toolbar>(R.id.toolbar)
-        toolbar.inflateMenu(R.menu.toolbar_student_archive)
+        toolbar.inflateMenu(R.menu.toolbar_folder_archive)
 
         toolbar.setNavigationOnClickListener {
             activity!!.onBackPressed()
         }
-        menuItemSearch = toolbar.menu.findItem(R.id.student_archive_menuItem_search)
+        menuItemSearch = toolbar.menu.findItem(R.id.folder_archive_menuItem_search)
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.menuItem_student_profile -> {
-                    //action nav to student profile activity
-                    ActivityUtil.startStudentProfile(this, studentId)
+                R.id.menuItem_folder_profile -> {
+                    //action nav to folder profile activity
+                    ActivityUtil.startFolderProfile(this, folderId)
                 }
                 R.id.menuItem_sort_init -> {
                     sortStrategy = SortStrategy.ByInitTime
@@ -520,7 +520,7 @@ class StudentArchiveFragment : BasicFragment(), OnOffsetChangedListener {
                     refreshItemList()
                     refreshViews()
                 }
-                R.id.student_archive_menuItem_search -> {
+                R.id.folder_archive_menuItem_search -> {
                     startEditSearch()
                 }
             }

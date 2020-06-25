@@ -177,11 +177,11 @@ object ImageUtil {
     /**
      * Save profile image
      */
-    fun saveStudentProfileImage(imageFileUri : Uri?, studentId : Int, context: Context) : String {
+    fun saveFolderProfileImage(imageFileUri : Uri?, folderId : Int, context: Context) : String {
 
         if(imageFileUri == null) return ""
 
-        val imagePath = FilePathHelper(context).studentProfileImagePath(studentId)
+        val imagePath = FilePathHelper(context).folderProfileImagePath(folderId)
         val isSuccess = reduceSizeOfImageAndSave(imageFileUri, imagePath, context, 75)
 
         if(isSuccess) return imagePath
@@ -191,11 +191,11 @@ object ImageUtil {
     /**
      *
      */
-    fun saveStudentBackgroundImage(imageFileUri : Uri?, studentId : Int, context: Context) : String {
+    fun saveFolderBackgroundImage(imageFileUri : Uri?, folderId : Int, context: Context) : String {
         if(imageFileUri == null) return ""
 
         //获取外部存贮目录
-        val imagePath = FilePathHelper(context).studentBackgroundImagePath(studentId)
+        val imagePath = FilePathHelper(context).folderBackgroundImagePath(folderId)
         val isSuccess = reduceSizeOfImageAndSave(imageFileUri, imagePath, context, 150)
 
         if(isSuccess) return imagePath

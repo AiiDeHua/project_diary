@@ -2,12 +2,12 @@ package com.xuanyuetech.tocoach.activity
 
 import android.os.Bundle
 import com.xuanyuetech.tocoach.R
-import com.xuanyuetech.tocoach.fragment.students.student.StudentProfileEditFragment
+import com.xuanyuetech.tocoach.fragment.folders.folder.FolderProfileEditFragment
 
 /**
- * new student activity
+ * new folder activity
  */
-class StudentProfileEditActivity : BasicActivity() {
+class FolderProfileEditActivity : BasicActivity() {
 
     //region onCreate
 
@@ -42,7 +42,7 @@ class StudentProfileEditActivity : BasicActivity() {
         val ts = supportFragmentManager.beginTransaction()
         ts.add(
             R.id.nav_host_fragment_archive_detail,
-            StudentProfileEditFragment()
+            FolderProfileEditFragment()
         )
         ts.commit()
     }

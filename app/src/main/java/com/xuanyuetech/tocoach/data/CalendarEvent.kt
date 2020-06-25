@@ -14,7 +14,7 @@ class CalendarEvent() {
     var id = -1
 
     var title = ""
-    var students = ""
+    var attendants = ""
     var location = ""
     var notes = ""
     var startTime = ""
@@ -84,13 +84,13 @@ class CalendarEvent() {
     /**
      * constructor to convert db calendarEvent to the object
      */
-    constructor( id: Int, title: String, students: String, location: String,
-                 notes: String, startTimeDBStr: String, endTimeDBStr: String,
-                 dayOfWeekDBStr: String, frequency: Int , eventStartDate : String = "",
-                 eventEndDate : String = "") : this(){
+    constructor(id: Int, title: String, attendants: String, location: String,
+                notes: String, startTimeDBStr: String, endTimeDBStr: String,
+                dayOfWeekDBStr: String, frequency: Int, eventStartDate : String = "",
+                eventEndDate : String = "") : this(){
         this.id = id
         this.title = title
-        this.students = students
+        this.attendants = attendants
         this.location = location
         this.notes = notes
         this.setDayOfWeekFromString(dayOfWeekDBStr)

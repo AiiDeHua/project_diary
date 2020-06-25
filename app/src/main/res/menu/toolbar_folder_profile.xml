@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menuItem_studentProfile_edit"
+        android:id="@+id/menuItem_folderProfile_edit"
         android:orderInCategory="100"
         android:icon="@drawable/ic_edit_24px"
         android:title="编辑"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/menuItem_studentProfile_delete"
+        android:id="@+id/menuItem_folderProfile_delete"
         android:orderInCategory="100"
         android:icon="@drawable/ic_delete_white_24dp"
         android:iconTint="@color/black"

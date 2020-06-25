@@ -9,12 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xuanyuetech.tocoach.R
-import com.xuanyuetech.tocoach.data.StudentArchiveObject
+import com.xuanyuetech.tocoach.data.FolderArchiveObject
 
 /**
- * Adapter for student archive cardView
+ * Adapter for folder archive cardView
  */
-class StudentArchiveCardViewAdapter(private var studentArchiveObjectList : List<StudentArchiveObject>) : RecyclerView.Adapter<StudentArchiveCardViewAdapter.ViewHolder>(){
+class FolderArchiveCardViewAdapter(private var folderArchiveObjectList : List<FolderArchiveObject>) : RecyclerView.Adapter<FolderArchiveCardViewAdapter.ViewHolder>(){
 
     private var itemClickListener: CostomOnItemClickListener? = null
 
@@ -31,14 +31,14 @@ class StudentArchiveCardViewAdapter(private var studentArchiveObjectList : List<
      * item count
      */
     override fun getItemCount(): Int {
-        return studentArchiveObjectList.size
+        return folderArchiveObjectList.size
     }
 
     /**
      * bind view
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = studentArchiveObjectList[position]
+        val item = folderArchiveObjectList[position]
 
         if(item.getArchiveImagePath().isNotBlank()){
             holder.imageView.setImageURI(Uri.parse(item.getArchiveImagePath()))
@@ -48,7 +48,7 @@ class StudentArchiveCardViewAdapter(private var studentArchiveObjectList : List<
 
         holder.textViewTitle.text = item.getArchiveTitle()
         holder.textViewSubtitle.text = item.getArchiveSubtitle()
-        holder.textViewStudentName.text = item.getArchiveStudentName()
+        holder.textViewFolderName.text = item.getArchiveFolderName()
 
         holder.itemView.setOnClickListener {
             itemClickListener!!.onItemClickListener(position)
@@ -62,7 +62,7 @@ class StudentArchiveCardViewAdapter(private var studentArchiveObjectList : List<
         var imageView: ImageView = view.findViewById(R.id.cardView_image)
         var textViewTitle: TextView = view.findViewById(R.id.cardView_title)
         var textViewSubtitle: TextView = view.findViewById(R.id.cardView_subtitle)
-        var textViewStudentName: TextView = view.findViewById(R.id.cardView_studentName)
+        var textViewFolderName: TextView = view.findViewById(R.id.cardView_folderName)
     }
 
     /**
@@ -84,7 +84,7 @@ class StudentArchiveCardViewAdapter(private var studentArchiveObjectList : List<
 /**
  * infix function to set up the RecyclerView with adapter
  */
-infix fun RecyclerView.setUpWith(studentArchiveCardViewAdapter : StudentArchiveCardViewAdapter) {
+infix fun RecyclerView.setUpWith(folderArchiveCardViewAdapter : FolderArchiveCardViewAdapter) {
     layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-    adapter = studentArchiveCardViewAdapter
+    adapter = folderArchiveCardViewAdapter
 }

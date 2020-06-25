@@ -118,7 +118,7 @@ class HomeFragment : BasicFragment() {
             homeCardViewAdapter!!.notifyDataSetChanged()
 
             when(homeEvents.size){
-                0 -> endTextView.text = "赶紧给学员添加新的视频和文本日志吧！"
+                0 -> endTextView.text = "赶紧给日志库添加新的视频和文本日志吧！"
                 maxListLength -> endTextView.text = "... ...\n... ..."
                 else -> endTextView.text = ""
             }

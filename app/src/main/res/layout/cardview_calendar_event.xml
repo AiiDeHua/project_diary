@@ -61,7 +61,7 @@
                 android:textSize="13sp"
                 android:lines="1"
                 tools:text="第一堂课" />
-s
+
             <TextView
                 android:id="@+id/item_event_detail"
                 android:layout_width="wrap_content"

@@ -119,9 +119,9 @@ class VideoPlayerInfoEditFragment(private val videoId : Int) : BasicFragment() {
                 .setPositiveButton("确定"){
                         dialog, _ ->dialog.dismiss()
 
-                    DataHelper().deleteStudentVideo(video, databaseHelper)
+                    DataHelper().deleteFolderVideo(video, databaseHelper)
                     Toast.makeText(context,"成功删除!", Toast.LENGTH_SHORT).show()
-                    activity!!.setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+                    activity!!.setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
                     activity!!.finish()
                 }
 

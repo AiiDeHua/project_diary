@@ -11,16 +11,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xuanyuetech.tocoach.R
-import com.xuanyuetech.tocoach.data.StudentArchiveObject
+import com.xuanyuetech.tocoach.data.FolderArchiveObject
 
 /**
- * Adapter for student archive cardView
+ * Adapter for folder archive cardView
  */
-class StudentListCardViewAdapter(private var studentArchiveObjectList : List<StudentArchiveObject>) : RecyclerView.Adapter<StudentListCardViewAdapter.ViewHolder>(),
+class FolderListCardViewAdapter(private var folderArchiveObjectList : List<FolderArchiveObject>) : RecyclerView.Adapter<FolderListCardViewAdapter.ViewHolder>(),
     Filterable {
 
     private var itemClickListener: CustomOnItemClickListener? = null
-    var filterStudentArchiveObjectList:List<StudentArchiveObject> = studentArchiveObjectList
+    var filterFolderArchiveObjectList:List<FolderArchiveObject> = folderArchiveObjectList
 
     /**
      * inflate item view
@@ -35,14 +35,14 @@ class StudentListCardViewAdapter(private var studentArchiveObjectList : List<Stu
      * item count
      */
     override fun getItemCount(): Int {
-        return filterStudentArchiveObjectList.size
+        return filterFolderArchiveObjectList.size
     }
 
     /**
      * bind view
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = filterStudentArchiveObjectList[position]
+        val item = filterFolderArchiveObjectList[position]
 
         if(item.getArchiveImagePath().isNotBlank()){
             holder.imageView.setImageURI(Uri.parse(item.getArchiveImagePath()))
@@ -52,7 +52,7 @@ class StudentListCardViewAdapter(private var studentArchiveObjectList : List<Stu
 
         holder.textViewTitle.text = item.getArchiveTitle()
         holder.textViewSubtitle.text = item.getArchiveSubtitle()
-        holder.textViewStudentName.text = item.getArchiveStudentName()
+        holder.textViewFolderName.text = item.getArchiveFolderName()
 
         holder.itemView.setOnClickListener {
             itemClickListener!!.onItemClickListener(position)
@@ -66,7 +66,7 @@ class StudentListCardViewAdapter(private var studentArchiveObjectList : List<Stu
         var imageView: ImageView = view.findViewById(R.id.cardView_image)
         var textViewTitle: TextView = view.findViewById(R.id.cardView_title)
         var textViewSubtitle: TextView = view.findViewById(R.id.cardView_subtitle)
-        var textViewStudentName: TextView = view.findViewById(R.id.cardView_studentName)
+        var textViewFolderName: TextView = view.findViewById(R.id.cardView_folderName)
     }
 
     /**
@@ -89,13 +89,13 @@ class StudentListCardViewAdapter(private var studentArchiveObjectList : List<Stu
 
                 val charString: String = constraint.toString()
 
-                filterStudentArchiveObjectList =
+                filterFolderArchiveObjectList =
                     if (charString.isEmpty()) {
                         //没有过滤的内容，则使用源数据
-                        studentArchiveObjectList
+                        folderArchiveObjectList
                     } else {
-                        val filteredList: ArrayList<StudentArchiveObject> = ArrayList()
-                        for (str in studentArchiveObjectList) {
+                        val filteredList: ArrayList<FolderArchiveObject> = ArrayList()
+                        for (str in folderArchiveObjectList) {
                             if (str.getArchiveTitle().contains(charString)) {
                                 filteredList.add(str)
                             }
@@ -104,13 +104,13 @@ class StudentListCardViewAdapter(private var studentArchiveObjectList : List<Stu
                     }
 
                 val filterResults = FilterResults()
-                filterResults.values = filterStudentArchiveObjectList
+                filterResults.values = filterFolderArchiveObjectList
                 return filterResults
             }
 
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                filterStudentArchiveObjectList = results!!.values as ArrayList<StudentArchiveObject>
+                filterFolderArchiveObjectList = results!!.values as ArrayList<FolderArchiveObject>
                 notifyDataSetChanged()
             }
         }
@@ -121,7 +121,7 @@ class StudentListCardViewAdapter(private var studentArchiveObjectList : List<Stu
 /**
  * infix function to set up the RecyclerView with adapter
  */
-infix fun RecyclerView.setUpWith(studentListCardViewAdapter: StudentListCardViewAdapter) {
+infix fun RecyclerView.setUpWith(folderListCardViewAdapter: FolderListCardViewAdapter) {
     layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-    adapter = studentListCardViewAdapter
+    adapter = folderListCardViewAdapter
 }

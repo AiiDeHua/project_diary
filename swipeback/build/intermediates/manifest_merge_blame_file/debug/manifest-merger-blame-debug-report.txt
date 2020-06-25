@@ -8,11 +8,11 @@
 8
 9    <uses-sdk
 10        android:minSdkVersion="16"
-10-->/Users/edwardxie/AndroidStudioProjects/Demo/swipeback/src/main/AndroidManifest.xml
+10-->D:\WorkPlace\diary\swipeback\src\main\AndroidManifest.xml
 11        android:targetSdkVersion="26" />
-11-->/Users/edwardxie/AndroidStudioProjects/Demo/swipeback/src/main/AndroidManifest.xml
+11-->D:\WorkPlace\diary\swipeback\src\main\AndroidManifest.xml
 12
 13    <application />
-13-->/Users/edwardxie/AndroidStudioProjects/Demo/swipeback/src/main/AndroidManifest.xml:10:5-19
+13-->D:\WorkPlace\diary\swipeback\src\main\AndroidManifest.xml:10:5-19
 14
 15</manifest>

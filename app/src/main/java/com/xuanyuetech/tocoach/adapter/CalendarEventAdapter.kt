@@ -62,7 +62,7 @@ class CalendarEventAdapter(val onClick: (CalendarEvent) -> Unit) : RecyclerView.
 
             containerView.findViewById<TextView>(R.id.item_event_startTime).text = event.getStartLocalDateTime().getHourMinutesStr()
             containerView.findViewById<TextView>(R.id.item_event_endTime).text = event.getEndLocalDateTime().getHourMinutesStr()
-            containerView.findViewById<TextView>(R.id.item_event_detail).text = event.students
+            containerView.findViewById<TextView>(R.id.item_event_detail).text = event.attendants
 
         }
     }

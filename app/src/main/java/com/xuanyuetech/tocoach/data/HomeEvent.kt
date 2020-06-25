@@ -17,7 +17,7 @@ class HomeEvent() {
     var type = ""
     var refId = ""
     var time = ""
-    var studentId = ""
+    var folderId = ""
 
     //internal conversion usage
     private val timeFormatter = DateTimeFormatter.ofPattern("yyyy年 M月 d日 HH:mm EEEE")
@@ -30,7 +30,7 @@ class HomeEvent() {
      * for database conversion
      */
     constructor(id : Int, title : String, notes: String, imageUrl : String,
-                type : String, refId : String, time : String, studentId : String) : this() {
+                type : String, refId : String, time : String, folderId : String) : this() {
         this.id = id
         this.title = title
         this.notes = notes
@@ -38,7 +38,7 @@ class HomeEvent() {
         this.type = type
         this.refId = refId
         this.time = time
-        this.studentId = studentId
+        this.folderId = folderId
     }
 
     /**
@@ -51,7 +51,7 @@ class HomeEvent() {
         this.type = homeEventObject.getHomeEventType()
         this.refId = homeEventObject.getHomeEventRefId()
         this.time = homeEventObject.getHomeEventInitTime().toStr()
-        this.studentId = homeEventObject.getStudentId()
+        this.folderId = homeEventObject.getFolderId()
     }
 
     //endregion

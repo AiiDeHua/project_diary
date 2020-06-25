@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/student_archive_menuItem_search"
+        android:id="@+id/folder_archive_menuItem_search"
         android:orderInCategory="100"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="搜索"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/menuItem_student_profile"
+        android:id="@+id/menuItem_folder_profile"
         android:orderInCategory="100"
         android:icon="@drawable/ic_account_box_24px"
-        android:title="学员信息"
+        android:title="日志库信息"
         app:showAsAction="never"/>
 
     <item

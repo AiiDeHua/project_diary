@@ -5,10 +5,10 @@
     android:id="@+id/mobile_navigation">
 
     <fragment
-        android:id="@+id/nav_main_students"
-        android:name="com.xuanyuetech.tocoach.fragment.students.StudentsFragment"
-        android:label="@string/mainActivity_studentsFrag_title"
-        tools:layout="@layout/fragment_students" />
+        android:id="@+id/nav_main_folders"
+        android:name="com.xuanyuetech.tocoach.fragment.folders.FoldersFragment"
+        android:label="@string/mainActivity_foldersFrag_title"
+        tools:layout="@layout/fragment_folders" />
 
     <fragment
         android:id="@+id/nav_main_calendar"

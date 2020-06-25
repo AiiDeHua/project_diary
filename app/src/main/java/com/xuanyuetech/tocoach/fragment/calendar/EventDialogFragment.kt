@@ -45,7 +45,7 @@ class EventDialogFragment(private val calendarEvent: CalendarEvent, private val 
 
     private lateinit var titleEditText: EditText
     private lateinit var locationText: EditText
-    private lateinit var studentsText: EditText
+    private lateinit var foldersText: EditText
     private lateinit var notesText: EditText
 
     private lateinit var mView: View
@@ -95,7 +95,7 @@ class EventDialogFragment(private val calendarEvent: CalendarEvent, private val 
         titleEditText.setMaxLength(CalendarEvent().maxTitleLength)
 
         locationText = mView.findViewById(R.id.editText_event_location)
-        studentsText = mView.findViewById(R.id.editText_event_people)
+        foldersText = mView.findViewById(R.id.editText_event_people)
         notesText = mView.findViewById(R.id.editText_event_notes)
         eventFreqStartText = mView.findViewById(R.id.textView_eventFrequency_start)
         eventFreqEndText = mView.findViewById(R.id.textView_eventFrequency_end)
@@ -131,7 +131,7 @@ class EventDialogFragment(private val calendarEvent: CalendarEvent, private val 
         frequencyText.text = calendarEvent.frequencyString()
         titleEditText.setText(calendarEvent.title)
         locationText.setText(calendarEvent.location)
-        studentsText.setText(calendarEvent.students)
+        foldersText.setText(calendarEvent.attendants)
         notesText.setText(calendarEvent.notes)
     }
 
@@ -252,7 +252,7 @@ class EventDialogFragment(private val calendarEvent: CalendarEvent, private val 
         addButton.setOnClickListener {
             calendarEvent.title = titleEditText.text.toString()
             calendarEvent.location = locationText.text.toString()
-            calendarEvent.students = studentsText.text.toString()
+            calendarEvent.attendants = foldersText.text.toString()
             calendarEvent.notes = notesText.text.toString()
             if (isValidSave()) {
                 listener?.finishAddEventDialogFrag(1, calendarEvent)

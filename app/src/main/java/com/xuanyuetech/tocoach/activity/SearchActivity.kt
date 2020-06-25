@@ -14,8 +14,8 @@ import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.xuanyuetech.tocoach.R
-import com.xuanyuetech.tocoach.adapter.StudentArchiveCardViewAdapter
-import com.xuanyuetech.tocoach.adapter.StudentCardViewAdapter
+import com.xuanyuetech.tocoach.adapter.FolderArchiveCardViewAdapter
+import com.xuanyuetech.tocoach.adapter.FolderCardViewAdapter
 import com.xuanyuetech.tocoach.adapter.setUpWith
 import com.xuanyuetech.tocoach.data.*
 import com.xuanyuetech.tocoach.util.ActivityUtil
@@ -29,7 +29,7 @@ class SearchActivity : BasicActivity() {
     private val handler = Handler()
 
     //textViews
-    private lateinit var studentTextView: TextView
+    private lateinit var folderTextView: TextView
     private lateinit var videoTextView : TextView
     private lateinit var diaryTextView : TextView
 
@@ -38,19 +38,19 @@ class SearchActivity : BasicActivity() {
     private val maxSearchLength = 7
 
     //related lists
-    private var studentFullList = ArrayList<Student>()
+    private var folderFullList = ArrayList<Folder>()
     private var videoFullList = ArrayList<Video>()
     private var diaryFullList = ArrayList<Diary>()
 
-    private var studentSearchList = ArrayList<Student>()
+    private var folderSearchList = ArrayList<Folder>()
     private var videoSearchList = ArrayList<Video>()
     private var diarySearchList = ArrayList<Diary>()
 
 
     //adapters
-    private lateinit var studentCardViewAdapter : StudentCardViewAdapter
-    private lateinit var videoCardViewAdapter : StudentArchiveCardViewAdapter
-    private lateinit var diaryCardViewAdapter : StudentArchiveCardViewAdapter
+    private lateinit var folderCardViewAdapter : FolderCardViewAdapter
+    private lateinit var videoCardViewAdapter : FolderArchiveCardViewAdapter
+    private lateinit var diaryCardViewAdapter : FolderArchiveCardViewAdapter
 
     private lateinit var cancelInputButton : ImageButton
 
@@ -87,8 +87,8 @@ class SearchActivity : BasicActivity() {
      * init all views
      */
     private fun initView(){
-        studentTextView = findViewById(R.id.search_activity_textView_folder)
-        studentTextView.visibility = GONE
+        folderTextView = findViewById(R.id.search_activity_textView_folder)
+        folderTextView.visibility = GONE
         videoTextView = findViewById(R.id.textView_video)
         videoTextView.visibility = GONE
         diaryTextView = findViewById(R.id.textView_diary)
@@ -106,8 +106,8 @@ class SearchActivity : BasicActivity() {
      * init all data
      */
     private fun initData(){
-        studentFullList = databaseHelper.getAllStudent()
-        videoFullList = databaseHelper.getAllStudentVideo()
+        folderFullList = databaseHelper.getAllFolder()
+        videoFullList = databaseHelper.getAllFolderVideo()
         diaryFullList = databaseHelper.getAllDairy()
     }
 
@@ -116,29 +116,29 @@ class SearchActivity : BasicActivity() {
      */
     private fun bindAdapter(){
 
-        //student search
-        studentCardViewAdapter = StudentCardViewAdapter(studentSearchList)
-        studentCardViewAdapter.setOnItemClickListener(
-            object : StudentCardViewAdapter.CustomOnItemClickListener {
+        //folder search
+        folderCardViewAdapter = FolderCardViewAdapter(folderSearchList)
+        folderCardViewAdapter.setOnItemClickListener(
+            object : FolderCardViewAdapter.CustomOnItemClickListener {
 
-                //start the student activity
+                //start the folder activity
                 override fun onItemClickListener(position: Int) {
                     if(isValidClick()){
-                        ActivityUtil.startStudent(
+                        ActivityUtil.startFolder(
                             this@SearchActivity,
-                            studentSearchList[position].id
+                            folderSearchList[position].id
                         )
                     }
                 }
             })
 
-        val studentRecyclerView : RecyclerView = findViewById(R.id.search_folder_list)
-        studentRecyclerView.setUpWith(studentCardViewAdapter)
+        val folderRecyclerView : RecyclerView = findViewById(R.id.search_folder_list)
+        folderRecyclerView.setUpWith(folderCardViewAdapter)
 
         //video search
-        videoCardViewAdapter = StudentArchiveCardViewAdapter(videoSearchList)
+        videoCardViewAdapter = FolderArchiveCardViewAdapter(videoSearchList)
         videoCardViewAdapter.setOnItemClickListener(
-            object : StudentArchiveCardViewAdapter.CostomOnItemClickListener {
+            object : FolderArchiveCardViewAdapter.CostomOnItemClickListener {
 
                 //start the video player activity
                 override fun onItemClickListener(position: Int) {
@@ -155,9 +155,9 @@ class SearchActivity : BasicActivity() {
         videoRecyclerView.setUpWith(videoCardViewAdapter)
 
         //diary search
-        diaryCardViewAdapter = StudentArchiveCardViewAdapter(diarySearchList)
+        diaryCardViewAdapter = FolderArchiveCardViewAdapter(diarySearchList)
         diaryCardViewAdapter.setOnItemClickListener(
-            object : StudentArchiveCardViewAdapter.CostomOnItemClickListener {
+            object : FolderArchiveCardViewAdapter.CostomOnItemClickListener {
 
                 //start the diary activity
                 override fun onItemClickListener(position: Int) {
@@ -193,25 +193,25 @@ class SearchActivity : BasicActivity() {
      */
     private fun searchAndRefreshView(input : String){
 
-        studentSearchList.clear()
+        folderSearchList.clear()
         videoSearchList.clear()
         diarySearchList.clear()
 
         if(input.isBlank()) {
-            studentTextView.visibility = GONE
+            folderTextView.visibility = GONE
             videoTextView.visibility = GONE
             diaryTextView.visibility = GONE
-            studentCardViewAdapter.notifyDataSetChanged()
+            folderCardViewAdapter.notifyDataSetChanged()
             videoCardViewAdapter.notifyDataSetChanged()
             diaryCardViewAdapter.notifyDataSetChanged()
             return
         }
 
         handler.post{
-            studentSearchList.addAll(studentFullList.filter { student -> student.name.contains(input)  })
-            if(studentSearchList.isEmpty()) studentTextView.visibility = GONE
-            else studentTextView.visibility = View.VISIBLE
-            studentCardViewAdapter.notifyDataSetChanged()
+            folderSearchList.addAll(folderFullList.filter { folder -> folder.name.contains(input)  })
+            if(folderSearchList.isEmpty()) folderTextView.visibility = GONE
+            else folderTextView.visibility = View.VISIBLE
+            folderCardViewAdapter.notifyDataSetChanged()
         }
 
         handler.post{
@@ -280,7 +280,7 @@ class SearchActivity : BasicActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        setResult(GlobalVariable().RESULT_NEED_REFRESH_STUDENT_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
+        setResult(GlobalVariable().RESULT_NEED_REFRESH_FOLDER_LIST_OR_HOME_EVENT_OR_ARCHIVE_LIST)
         finish()
     }
 

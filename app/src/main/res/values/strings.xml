@@ -23,15 +23,15 @@
     <!--    main page tool bar & bottom navigation bar title-->
     <!--        home fragment-->
     <string name="mainActivity_homeFrag_title">主页</string>
-    <!--        students fragment-->
-    <string name="mainActivity_studentsFrag_title">列表</string>
+    <!--        folders fragment-->
+    <string name="mainActivity_foldersFrag_title">列表</string>
     <!--        calendar fragment-->
     <string name="mainActivity_calendarFrag_title">日程表</string>
     <!--        account fragment-->
     <string name="mainActivity_accountFrag_title">账户</string>
 
 <!--    search activity-->
-    <string name="activity_search_search_hint">搜索视频库姓名、日志标题</string>
+    <string name="activity_search_search_hint">搜索视频名称、日志标题</string>
     <string name="search_activity_col_name_archive">库</string>
     <string name="search_activity_col_name_video">视频日志</string>
     <string name="search_activity_col_name_diary">文本日志</string>
@@ -45,19 +45,19 @@
     <!--        event fragment-->
     <string name="mainActivity_event_title">标题</string>
     <string name="mainActivity_event_location">地点</string>
-    <string name="mainActivity_event_students">一览</string>
+    <string name="mainActivity_event_folders">一览</string>
     <string name="mainActivity_event_notes">备注</string>
 
-    <!--        student archive fragment-->
-    <string name="studentActivity_studentArchiveFrag_title">视频列表</string>
-    <string name="studentActivity_studentArchiveFrag_camera">录像</string>
-    <string name="studentActivity_studentArchiveFrag_pickFromGallery">录像视频日志</string>
-    <string name="studentActivity_studentArchiveFrag_diary">文字图片日志</string>
+    <!--        folder archive fragment-->
+    <string name="folderActivity_folderArchiveFrag_title">视频列表</string>
+    <string name="folderActivity_folderArchiveFrag_camera">录像</string>
+    <string name="folderActivity_folderArchiveFrag_pickFromGallery">录像视频日志</string>
+    <string name="folderActivity_folderArchiveFrag_diary">文字图片日志</string>
 
 
     <!--    newFolder fragment-->
-    <string name="newStudentActivity_newStudentFrag_title">添加新的视频库</string>
-    <string name="newStudentActivity_newStudentFrag_addButton">添加</string>
+    <string name="newFolderActivity_newFolderFrag_title">添加新的视频库</string>
+    <string name="newFolderActivity_newFolderFrag_addButton">添加</string>
 
     <string name="thanks_letter">您好教练员，\n\n
          &#160;&#160;&#160;&#160; 首先特别感谢您使用我们的产品“回声”来记录和分享您每天有趣的教学瞬间。\n \n

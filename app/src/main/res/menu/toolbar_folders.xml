@@ -10,7 +10,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:title="search" />
 
     <item
-        android:id="@+id/menuItem_home_add_new_student"
+        android:id="@+id/menuItem_home_add_new_folder"
         android:orderInCategory="100"
         android:icon="@drawable/ic_plus"
         android:title="adding"

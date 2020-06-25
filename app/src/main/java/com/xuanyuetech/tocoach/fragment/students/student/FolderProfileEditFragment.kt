@@ -1,4 +1,4 @@
-package com.xuanyuetech.tocoach.fragment.students.student
+package com.xuanyuetech.tocoach.fragment.folders.folder
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -17,20 +17,20 @@ import androidx.core.widget.addTextChangedListener
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.xuanyuetech.tocoach.data.DatabaseHelper
 import com.xuanyuetech.tocoach.data.DataHelper
-import com.xuanyuetech.tocoach.data.Student
+import com.xuanyuetech.tocoach.data.Folder
 import com.xuanyuetech.tocoach.fragment.BasicFragment
 import com.xuanyuetech.tocoach.util.*
 import com.xuanyuetech.tocoach.util.setMaxLength
 import de.hdodenhof.circleimageview.CircleImageView
 
 /**
- * student profile fragment
+ * folder profile fragment
  */
-class StudentProfileEditFragment : BasicFragment() {
+class FolderProfileEditFragment : BasicFragment() {
 
     //region properties
     private lateinit var databaseHelper: DatabaseHelper
-    private lateinit var student : Student
+    private lateinit var folder : Folder
 
     private lateinit var profileView : CircleImageView
     private lateinit var nameView : TextView
@@ -61,7 +61,7 @@ class StudentProfileEditFragment : BasicFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        mView = inflater.inflate(R.layout.fragment_student_profile_edit, container, false)
+        mView = inflater.inflate(R.layout.fragment_folder_profile_edit, container, false)
 
         databaseHelper = DatabaseHelper(activity!!)
 
@@ -84,7 +84,7 @@ class StudentProfileEditFragment : BasicFragment() {
      * init views
      */
     private fun initViews(){
-        profileView = mView.findViewById(R.id.imageView_studentImage)
+        profileView = mView.findViewById(R.id.imageView_folderImage)
         nameView = mView.findViewById(R.id.textView_name)
 
         itemProfileImage = mView.findViewById(R.id.item_edit_image)
@@ -97,10 +97,10 @@ class StudentProfileEditFragment : BasicFragment() {
      * init data
      */
     private fun initData(){
-        student = DatabaseHelper(activity!!).findStudentById(ActivityUtil.getStudentIdFromIntent(activity!!.intent))!!
-        nameView.text = student.name
+        folder = DatabaseHelper(activity!!).findFolderById(ActivityUtil.getFolderIdFromIntent(activity!!.intent))!!
+        nameView.text = folder.name
 
-        if(student.profileImagePath.isNotBlank()) profileView.setImageURI(Uri.parse(student.profileImagePath))
+        if(folder.profileImagePath.isNotBlank()) profileView.setImageURI(Uri.parse(folder.profileImagePath))
         else profileView.setImageResource(R.drawable.profile_default)
 
     }
@@ -141,11 +141,11 @@ class StudentProfileEditFragment : BasicFragment() {
                 builder
                     .setPositiveButton("确定") { dialogInterface: DialogInterface, _: Int ->
 
-                        if(updatedName.isBlank()) MessageHelper.noticeDialog(context!!, "姓名不能为空")
+                        if(updatedName.isBlank()) MessageHelper.noticeDialog(context!!, "名称不能为空")
                         else{
                             nameView.text = updatedName
-                            student.name = updatedName
-                            DataHelper().updateStudent(student, databaseHelper)
+                            folder.name = updatedName
+                            DataHelper().updateFolder(folder, databaseHelper)
                             dialogInterface.dismiss()
                         }
                     }
@@ -156,12 +156,12 @@ class StudentProfileEditFragment : BasicFragment() {
                 val dialog = builder.create()
                 dialog.show()
                 dialog.setCanceledOnTouchOutside(false)
-                dialog.findViewById<TextView>(R.id.title).text = "姓名"
+                dialog.findViewById<TextView>(R.id.title).text = "名称"
 
                 val content = dialog.findViewById<EditText>(R.id.content)
 
-                content.setText(student.name)
-                content.setMaxLength(Student().maxNameLength)
+                content.setText(folder.name)
+                content.setMaxLength(Folder().maxNameLength)
                 content.addTextChangedListener {
                     updatedName = dialog.findViewById<EditText>(R.id.content).text.toString()
                 }
@@ -174,8 +174,8 @@ class StudentProfileEditFragment : BasicFragment() {
                 val builder = buildDialogBuilder()
                 builder
                     .setPositiveButton("确定") { dialogInterface: DialogInterface, _: Int ->
-                        student.notes = updatedNotes
-                        DataHelper().updateStudent(student, databaseHelper)
+                        folder.notes = updatedNotes
+                        DataHelper().updateFolder(folder, databaseHelper)
                         dialogInterface.dismiss()
                     }
                     .setNegativeButton("取消") { dialogInterface: DialogInterface, _: Int ->
@@ -188,7 +188,7 @@ class StudentProfileEditFragment : BasicFragment() {
                 dialog.findViewById<TextView>(R.id.title).text = "备注"
 
                 val content = dialog.findViewById<EditText>(R.id.content)
-                content.findViewById<EditText>(R.id.content).setText(student.notes)
+                content.findViewById<EditText>(R.id.content).setText(folder.notes)
                 content.addTextChangedListener {
                     updatedNotes = dialog.findViewById<EditText>(R.id.content).text.toString()
                 }
@@ -225,16 +225,16 @@ class StudentProfileEditFragment : BasicFragment() {
 
                 GalleryIntentFor.Profile -> {
                     //get image for profile
-                    student.profileImagePath =
-                        ImageUtil.saveStudentProfileImage(uri, student.id, context!!)
+                    folder.profileImagePath =
+                        ImageUtil.saveFolderProfileImage(uri, folder.id, context!!)
                     profileView.setImageURI(uri)
-                    DataHelper().updateStudent(student, databaseHelper)
+                    DataHelper().updateFolder(folder, databaseHelper)
                 }
                 GalleryIntentFor.Background -> {
                     //get image for background
-                    student.backgroundImagePath =
-                        ImageUtil.saveStudentBackgroundImage(uri, student.id, context!!)
-                    DataHelper().updateStudent(student, databaseHelper)
+                    folder.backgroundImagePath =
+                        ImageUtil.saveFolderBackgroundImage(uri, folder.id, context!!)
+                    DataHelper().updateFolder(folder, databaseHelper)
                 }
             }
         }   else if (resultCode == ImagePicker.RESULT_ERROR) {

@@ -4,13 +4,13 @@ import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
 
 /**
- * the video class which can be shown in student archive and home event
+ * the video class which can be shown in folder archive and home event
  */
-class Video() : StudentArchiveObject, HomeEventObject{
+class Video() : FolderArchiveObject, HomeEventObject{
 
     //region properties
 
-    var studentId = -1
+    var folderId = -1
     var id = -1
     var initTime = ""
     var updateTime = ""
@@ -19,7 +19,7 @@ class Video() : StudentArchiveObject, HomeEventObject{
     var localUrl = ""
     var notes = ""
     var coverPath = ""
-    var studentName = ""
+    var folderName = ""
 
     val maxTitleLength = 15
 
@@ -33,10 +33,10 @@ class Video() : StudentArchiveObject, HomeEventObject{
     /**
      * convert from DB
      */
-    constructor(studentId : Int, id : Int, initTime : String, title : String, cloudUrl: String,
-                localUrl : String, notes : String, coverUrl : String, updateTime : String, studentName : String)
+    constructor(folderId : Int, id : Int, initTime : String, title : String, cloudUrl: String,
+                localUrl : String, notes : String, coverUrl : String, updateTime : String, folderName : String)
             : this() {
-        this.studentId = studentId
+        this.folderId = folderId
         this.id = id
         this.initTime = initTime
         this.title = title
@@ -45,15 +45,15 @@ class Video() : StudentArchiveObject, HomeEventObject{
         this.notes = notes
         this.coverPath = coverUrl
         this.updateTime = updateTime
-        this.studentName = studentName
+        this.folderName = folderName
     }
 
     /**
      * new create video
      */
-    constructor(studentId : Int, initTime : LocalDateTime, title : String, cloudUrl: String,
-                localUrl : String,  notes : String, coverUrl : String, studentName : String) : this() {
-        this.studentId = studentId
+    constructor(folderId : Int, initTime : LocalDateTime, title : String, cloudUrl: String,
+                localUrl : String,  notes : String, coverUrl : String, folderName : String) : this() {
+        this.folderId = folderId
         this.initTime = initTime.format(timeFormatter)
         this.title = title
         this.cloudUrl = cloudUrl
@@ -61,7 +61,7 @@ class Video() : StudentArchiveObject, HomeEventObject{
         this.notes = notes
         this.coverPath = coverUrl
         this.updateTime = initTime.format(timeFormatter)
-        this.studentName = studentName
+        this.folderName = folderName
     }
 
     //endregion
@@ -77,7 +77,7 @@ class Video() : StudentArchiveObject, HomeEventObject{
 
     //endregion
 
-    //region studentArchiveObject interface
+    //region folderArchiveObject interface
 
     override fun getArchiveTitle() : String{
         return title
@@ -99,8 +99,8 @@ class Video() : StudentArchiveObject, HomeEventObject{
         return LocalDateTime.parse(initTime, timeFormatter)
     }
 
-    override fun getArchiveStudentName(): String {
-        return studentName
+    override fun getArchiveFolderName(): String {
+        return folderName
     }
 
     //endregion
@@ -126,8 +126,8 @@ class Video() : StudentArchiveObject, HomeEventObject{
         return LocalDateTime.parse(initTime, timeFormatter)
     }
 
-    override fun getStudentId(): String {
-        return studentId.toString()
+    override fun getFolderId(): String {
+        return folderId.toString()
     }
 
     //endregion

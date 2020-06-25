@@ -25,11 +25,11 @@
                             android:layout_height="wrap_content"/>
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/textView_student_label"
+                            android:id="@+id/textView_folder_label"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:text="学员数量:"
+                            android:text="日志库数量:"
                             android:textSize="15sp"
                             android:gravity="center" />
 
