@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menuItem_search"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_search_blue_green"
+        app:showAsAction="always"
+        android:title="search" />
+
+    <item
+        android:id="@+id/menuItem_home_add_new_student"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_plus"
+        android:title="adding"
+        app:showAsAction="always"/>
+
+
+</menu>

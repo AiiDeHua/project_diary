@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_dialog"
+    android:orientation="vertical">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/button_event_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消编辑"
+        android:textColor="@color/blue_flat_90"
+        android:background="@android:color/transparent"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/button_event_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存课程"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/colorBlack_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <androidx.core.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <androidx.appcompat.widget.AppCompatTextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="标题"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="10dp"
+          android:paddingBottom="10dp"/>
+
+      <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/editText_event_title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/white"
+          android:textColor="@color/black"
+          android:textCursorDrawable="@drawable/cursor_edit_text"
+          android:textSize="15sp"
+          android:lines="1"
+          android:inputType="text"
+          android:hint="请输入标题"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"/>
+
+      <androidx.appcompat.widget.AppCompatTextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="学员"
+          android:textSize="13sp"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"/>
+
+      <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/editText_event_students"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/white"
+          android:textColor="@color/black"
+          android:textCursorDrawable="@drawable/cursor_edit_text"
+          android:textSize="15sp"
+          android:hint="（选填）"
+          android:lines="1"
+          android:inputType="text"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"/>
+
+      <androidx.appcompat.widget.AppCompatTextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="地点"
+          android:textSize="13sp"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"/>
+
+      <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/editText_event_location"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/white"
+          android:textColor="@color/black"
+          android:textCursorDrawable="@drawable/cursor_edit_text"
+          android:textSize="15sp"
+          android:lines="1"
+          android:hint="（选填）"
+          android:inputType="text"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"/>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView_pageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@color/colorBlack_50"
+            android:padding="10dp"
+            android:text="2020年01月01日"/>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/event_start_setting"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"
+          android:background="@android:color/white"
+          android:clickable="true"
+          android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="15sp"
+            android:text="开始时间"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_eventStartTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="15sp"
+            android:text="13:00"
+            />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/event_end_setting"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"
+          android:background="@android:color/white"
+          android:clickable="true"
+          android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="15sp"
+            android:text="结束时间"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_eventEndTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="15sp"
+            android:text="14:00"
+            />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/event_dayOfWeek_setting"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:background="@android:color/white"
+          android:visibility="gone"
+          android:clickable="true"
+          android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="15sp"
+            android:text="星期安排"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_eventDayOfWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="15sp"
+            android:text="一三"
+            />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/event_frequency_setting"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"
+          android:background="@android:color/white"
+          android:clickable="true"
+          android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="15sp"
+            android:text="重复"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_eventFrequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="15sp"
+            android:text="每周"
+            />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.appcompat.widget.LinearLayoutCompat
+          android:id="@+id/freq_dates_setting_container"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/event_freq_start_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="10dp"
+            android:background="@android:color/white"
+            android:clickable="true"
+            android:focusable="true">
+
+          <androidx.appcompat.widget.AppCompatTextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              android:textSize="15sp"
+              android:text="--开始日期"
+              />
+
+          <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView_eventFrequency_start"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              android:textSize="15sp"
+              android:text="2019年11月15日"
+              />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/event_freq_end_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="10dp"
+            android:background="@android:color/white"
+            android:clickable="true"
+            android:focusable="true">
+
+          <androidx.appcompat.widget.AppCompatTextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              android:textSize="15sp"
+              android:text="--结束日期"
+              />
+
+          <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/textView_eventFrequency_end"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              android:textSize="15sp"
+              android:text="2019年11月20日"
+              />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+      <androidx.appcompat.widget.AppCompatTextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="备注"
+          android:textSize="13sp"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"/>
+
+      <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/editText_event_notes"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/white"
+          android:textColor="@color/black"
+          android:textCursorDrawable="@drawable/cursor_edit_text"
+          android:textSize="15sp"
+          android:minLines="3"
+          android:hint="（选填）"
+          android:paddingStart="15dp"
+          android:paddingTop="10dp"
+          android:paddingEnd="15dp"
+          android:paddingBottom="10dp"/>
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="10dp"/>
+
+      <Button
+          android:id="@+id/button_delete_event"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/red_watermelon"
+          android:background="@android:color/transparent"
+          android:layout_marginTop="-10dp"
+          android:elevation="0dp"
+          android:text="停止或者删除课程" />
+
+    </LinearLayout>
+
+
+  </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

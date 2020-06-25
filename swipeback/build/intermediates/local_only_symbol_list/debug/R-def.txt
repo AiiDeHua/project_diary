@@ -1,0 +1,19 @@
+R_DEF: Internal format may change without notice
+local
+attr SwipeBackLayoutStyle
+attr? edge_flag
+attr? edge_size
+attr? shadow_bottom
+attr? shadow_left
+attr? shadow_right
+drawable shadow_bottom
+drawable shadow_left
+drawable shadow_right
+id all
+id bottom
+id left
+id right
+id swipe
+layout swipeback_layout
+style SwipeBackLayout
+styleable SwipeBackLayout edge_size edge_flag shadow_left shadow_right shadow_bottom

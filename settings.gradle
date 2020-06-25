@@ -1,0 +1,2 @@
+include ':app', ':calendar_library', ':imagepicker', ':swipeback'
+rootProject.name='Demo'

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    System   -->
+    <color name="colorPrimary">#F5F5F5</color>
+    <color name="colorPrimaryDark">#F5F5F5</color>
+    <color name="colorAccent">#F5F5F5</color>
+    <color name="color_toolbar_popup_background">@color/colorBlack_70</color>
+    <color name="color_toolbar_popup_textColor">@color/colorPrimary</color>
+
+    <color name="colorBlack_100">#000000</color>
+    <color name="colorBlack_70">#B2000000</color>
+    <color name="colorBlack_50">#80000000</color>
+    <color name="colorBlack_20">#33000000</color>
+    <color name="colorBlack_10">#1A000000</color>
+    <color name="colorBlack_5">#0D000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="Grey_100">#F5F5F5</color>
+    <color name="Grey_200">#EEEEEE</color>
+    <color name="Grey_300">#E0E0E0</color>
+    <color name="Grey_400">#BDBDBD</color>
+    <color name="Grey_50">#FAFAFA</color>
+    <color name="Grey_500">#9E9E9E</color>
+    <color name="Grey_600">#757575</color>
+    <color name="Grey_700">#616161</color>
+    <color name="Grey_800">#424242</color>
+    <color name="Grey_900">#212121</color>
+
+    <color name="blue_flat_90">#E670A1FF</color>
+    <color name="themeColorPrimary_blue_flat_100">#00cec9</color>
+
+    <color name="colorWhite_100">#FFFFFF</color>
+
+    <color name="colorpink_90">#E6F570B6</color>
+
+    <color name="red_watermelon">#ff4757</color>
+
+    <color name="sky_blue_70">#B3C7ECEE</color>
+
+<!--    student archive Fab color   -->
+    <color name="color_videoEditor_fab">#E670A1FF</color>
+    <color name="color_videoEditor_fab_pressed">#70a1ff</color>
+    <color name="color_videoEditor_fab_button">#E670A1FF</color>
+    <color name="color_videoEditor_fab_button_pressed">#70a1ff</color>
+    <color name="color_videoEditor_fab_label_background">#80000000</color>
+
+<!--    VideoEditor color  -->
+    <color name="color_videoEditor_trimmer">#B3ECCC68</color>
+    <color name="color_videoEditor_speed">#8070A1FF</color>
+    <color name="color_videoEditor_graffiti">#80ADFF2F</color>
+
+    <color name="color_videoEditor_progress_bar">#B3FFA500</color>
+
+    <color name="color_videoEditor_trimmer_apply">@color/colorPrimary</color>
+
+    <color name="paint1">#FFFFFF</color>
+    <color name="paint2">#DD1E1E</color>
+    <color name="paint3">#ffefa8</color>
+    <color name="paint4">#fccaff</color>
+    <color name="paint5">#61dcff</color>
+    <color name="paint6">#ffc502</color>
+    <color name="paint7">#ff8621</color>
+
+    <color name="text1">#FFFFFF</color>
+    <color name="text2">#008000</color>
+    <color name="text3">#dc143c</color>
+    <color name="text4">#fa8072</color>
+    <color name="text5">#da70d6</color>
+    <color name="text6">#ff8c00</color>
+
+    <color name="orange_70">#B3FFA500</color>
+    <color name="blue">#0000ff</color> <!-- 蓝色 -->
+    <color name="black">#000000</color> <!-- 黑色 -->
+    <color name="khaki">#f0e68c</color> <!-- 黄褐色 -->
+    <color name="burlywood_70">#B3DEB887</color> <!-- 实木色 -->
+    <color name="white">#ffffff</color> <!-- 白色 -->
+    <color name="orange">#ffa500</color> <!-- 橙色 -->
+    <color name="greenyellow">#adff2f</color> <!-- 黄绿色 -->
+
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_main_home"
+        android:icon="@drawable/ic_home_24px"
+        android:title="@string/mainActivity_homeFrag_title" />
+
+    <item
+        android:id="@+id/nav_main_students"
+        android:icon="@drawable/ic_student_list_24px"
+        android:title="@string/mainActivity_studentsFrag_title" />
+
+    <item
+        android:id="@+id/nav_main_calendar"
+        android:icon="@drawable/ic_calendar_24px"
+        android:title="@string/mainActivity_calendarFrag_title" />
+
+    <item
+        android:id="@+id/nav_main_account"
+        android:icon="@drawable/ic_account_box_24px"
+        android:title="@string/mainActivity_accountFrag_title" />
+
+</menu>

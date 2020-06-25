@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/student_archive_menuItem_search"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="搜索"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menuItem_student_profile"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_account_box_24px"
+        android:title="学员信息"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menuItem_sort_init"
+        android:orderInCategory="100"
+        android:title="按创建时间排序"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menuItem_sort_update"
+        android:orderInCategory="100"
+        android:title="按更新时间排序"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menuItem_sort_title"
+        android:orderInCategory="100"
+        android:title="按标题排序"
+        app:showAsAction="never"/>
+
+
+</menu>

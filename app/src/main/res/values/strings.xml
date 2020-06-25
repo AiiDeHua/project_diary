@@ -1,0 +1,66 @@
+<resources>
+
+    <!--    general-->
+    <string name="app_name">回声</string>
+
+    <!--    permissions-->
+    <string name="permission_title_rationale">缺少授权</string>
+    <string name="permission_write_storage_rationale">需要权限来选择视频。</string>
+    <string name="toast_cannot_retrieve_selected_video">视频读取错误</string>
+
+    <!--    main page tool bar & bottom navigation bar title-->
+    <!--        home fragment-->
+    <string name="mainActivity_homeFrag_title">主页</string>
+    <!--        students fragment-->
+    <string name="mainActivity_studentsFrag_title">列表</string>
+    <!--        calendar fragment-->
+    <string name="mainActivity_calendarFrag_title">日程表</string>
+    <!--        account fragment-->
+    <string name="mainActivity_accountFrag_title">账户</string>
+
+<!--    search activity-->
+    <string name="activity_search_search_hint">搜索视频库姓名、日志标题</string>
+    <string name="search_activity_col_name_folder">视频库</string>
+    <string name="search_activity_col_name_video">视频日志</string>
+    <string name="search_activity_col_name_diary">文本日志</string>
+
+    <!--        event fragment-->
+    <string name="mainActivity_event_title">标题</string>
+    <string name="mainActivity_event_location">地点</string>
+    <string name="mainActivity_event_students">一览</string>
+    <string name="mainActivity_event_notes">备注</string>
+
+    <!--        student archive fragment-->
+    <string name="studentActivity_studentArchiveFrag_title">视频列表</string>
+    <string name="studentActivity_studentArchiveFrag_camera">录像</string>
+    <string name="studentActivity_studentArchiveFrag_pickFromGallery">录像视频日志</string>
+    <string name="studentActivity_studentArchiveFrag_diary">文字图片日志</string>
+
+    <!--        studentProfile fragment-->
+    <string name="studentActivity_studentProfileFrag_title">整理信息</string>
+
+    <!--    newFolder fragment-->
+    <string name="newStudentActivity_newStudentFrag_title">添加新的视频库</string>
+    <string name="newStudentActivity_newStudentFrag_addButton">添加</string>
+
+    <string name="thanks_letter">您好教练员，\n\n
+         &#160;&#160;&#160;&#160; 首先特别感谢您使用我们的产品“回声”来记录和分享您每天有趣的教学瞬间。\n \n
+         &#160;&#160;&#160;&#160; “回声”是我们两位大学生的业余创作作品，所以肯定存在一些不足的地方，还请您谅解，也请您能随时告诉我们在使用产品中遇到的问题。 \n \n
+         &#160;&#160;&#160;&#160; 为了更好的收集建议和产品使用反馈，我们专门为这个软件开通了一个公众号（ 搜索 “轩岳体育科技工作室” ），在此恳请您有空的时候可以给我们留言，我们会尽量在下一次的产品更新中满足您的需求，来帮助您记录每一位学员的每一次成长。\n \n
+         &#160;&#160;&#160;&#160; 最后，为每一位在体育教育岗位的园丁们送上我们最诚挚的感谢！
+    </string>
+
+    <string name="privacy_policy_welcome_page">请你务必审慎阅读，充分理解"隐私政策"的各项条款，包括但不限于获取你手机的存储空间的访问权限。你可阅读</string>
+    <string name="project_name">ToCoach</string>
+    <string name="team_name">轩岳体育科技工作室</string>
+    <string name="save">本地保存</string>
+
+    <string name="pref_previously_started">previous_started</string>
+    <string name="pref_previously_privacy_agreement">privacy_agreement</string>
+
+    <string name="privacy_rule"> 本软件尊重并保护所有使用服务用户的个人隐私权。</string>
+    <string name="privacy_agreement_link">https://blog.csdn.net/weixin_44466403/article/details/106881039</string>
+    <string name="user_agreement_link">https://blog.csdn.net/weixin_44466403/article/details/106913508</string>
+
+
+</resources>

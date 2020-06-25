@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation">
+
+    <fragment
+        android:id="@+id/nav_main_students"
+        android:name="com.xuanyuetech.tocoach.fragment.students.StudentsFragment"
+        android:label="@string/mainActivity_studentsFrag_title"
+        tools:layout="@layout/fragment_students" />
+
+    <fragment
+        android:id="@+id/nav_main_calendar"
+        android:name="com.xuanyuetech.tocoach.fragment.calendar.CalendarFragment"
+        android:label="@string/mainActivity_calendarFrag_title"
+        tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/nav_main_home"
+        android:name="com.xuanyuetech.tocoach.fragment.home.HomeFragment"
+        android:label="@string/mainActivity_homeFrag_title"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_main_account"
+        android:name="com.xuanyuetech.tocoach.fragment.account.AccountFragment"
+        android:label="@string/mainActivity_accountFrag_title"
+        tools:layout="@layout/fragment_account" />
+
+</navigation>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="15dp"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                                <RelativeLayout
+                                    android:id="@+id/relativeLayout_videoPlayer_title"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_alignParentTop="true"
+                                            android:orientation="vertical"
+                                            android:layout_margin="10dp"
+                                            android:layout_toStartOf="@+id/constraintLayout_videoPlayer_button">
+
+                                                <TextView
+                                                    android:id="@+id/textView_videoPlayer_title"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:maxLines="2"
+                                                    android:minLines="2"
+                                                    android:gravity="center_vertical"
+                                                    android:text="第一次训练"
+                                                    android:fontFamily="@font/roboto"
+                                                    android:theme="@style/TextView.TitleText"/>
+
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:id="@+id/constraintLayout_videoPlayer_button"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:layout_alignParentEnd="true">
+
+                                                <androidx.appcompat.widget.AppCompatButton
+                                                    android:id="@+id/button_videoPlayer_edit"
+                                                    style="?android:attr/borderlessButtonStyle"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignParentTop="true"
+                                                    android:layout_alignParentEnd="true"
+                                                    android:drawableTop="@drawable/ic_edit_24px"
+                                                    android:text="编辑"/>
+
+                                                <androidx.appcompat.widget.AppCompatButton
+                                                    android:id="@+id/button_videoPlayer_share"
+                                                    style="?android:attr/borderlessButtonStyle"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:drawableTop="@drawable/ic_share_24px"
+                                                    android:text="分享"/>
+
+
+
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                </RelativeLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:padding="5dp"
+                                    android:background="@color/colorPrimary"/>
+
+
+                                <TextView
+                                    android:id="@+id/textView_videoPlayer_notes"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="test notes"
+                                    android:theme="@style/TextView.paragraph"
+                                    android:padding="15dp"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

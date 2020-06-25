@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginStart="5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/student_frag_cardView_img"
+            android:layout_width="match_parent"
+            android:layout_weight="3"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            app:civ_border_width="1dp"
+            app:civ_border_color="#FFFAFA"
+            android:src="@drawable/profile_default" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/student_frag_cardView_img"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/border"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/student_frag_cardView_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:lines="1"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack_70"
+                android:fontFamily="@font/roboto_bold"
+                android:textStyle="bold"
+                android:text="张三" />
+
+            <TextView
+                android:id="@+id/student_frag_cardView_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:lines="1"
+                android:textColor="@color/colorBlack_50"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="12sp"
+                android:text="周四下午课程学员"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
