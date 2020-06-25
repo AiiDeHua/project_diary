@@ -41,12 +41,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:gravity="center|left"
+                android:gravity="center|start"
                 android:lineSpacingExtra="3dp"
                 android:lineSpacingMultiplier="1.2"
                 android:textColor="#999999"
-                android:textSize="14dp"
-                tools:text="asdfsdafasd" />
+                android:textSize="14sp"
+                tools:text="@string/span_long" />
         </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>

@@ -43,7 +43,7 @@ class NewFolderActivity : BasicActivity() {
         //transfer the video editor fragment
         val ts = supportFragmentManager.beginTransaction()
         ts.add(
-            R.id.nav_host_fragment_new_student,
+            R.id.nav_host_fragment_new_folder,
             NewStudentFragment()
         )
         ts.commit()

@@ -15,7 +15,7 @@ class StudentActivity: BasicActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE) // 隐藏标题 //这行代码一定要在setContentView之前，不然会闪退
-        setContentView(R.layout.activity_folder)
+        setContentView(R.layout.activity_archive)
 
         val ts = supportFragmentManager.beginTransaction()
         ts.add(

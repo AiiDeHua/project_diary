@@ -65,10 +65,10 @@
                     android:paddingBottom="10dp"
                     android:fontFamily="@font/roboto"
                     android:textStyle="bold"
-                    android:text="@string/search_activity_col_name_folder"/>
+                    android:text="@string/search_activity_col_name_archive"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/search_student_list"
+                    android:id="@+id/search_folder_list"
                     android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>

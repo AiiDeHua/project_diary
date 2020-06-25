@@ -203,7 +203,7 @@ class StudentProfileEditFragment : BasicFragment() {
     private fun buildDialogBuilder() : AlertDialog.Builder{
         val inflater = activity!!.layoutInflater
         val builder: AlertDialog.Builder = AlertDialog.Builder(activity, R.style.CustomDialogTheme)
-        val view: View = inflater.inflate(R.layout.dialog_student_profile_edit_item, null)
+        val view: View = inflater.inflate(R.layout.dialog_folder_detail_edit_item, null)
         builder.setView(view)
 
         return builder

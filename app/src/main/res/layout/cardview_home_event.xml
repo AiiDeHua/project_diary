@@ -61,13 +61,13 @@
                         app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
-                        android:id="@+id/homeEvent_student"
+                        android:id="@+id/homeEvent_folder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorBlack_50"
                         android:textSize="14sp"
                         android:textStyle="normal"
-                        android:text="李贤"
+                        android:text="@string/span_short"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>

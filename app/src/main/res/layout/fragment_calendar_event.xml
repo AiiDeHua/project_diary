@@ -77,7 +77,7 @@
       <androidx.appcompat.widget.AppCompatTextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="学员"
+          android:text="人员"
           android:textSize="13sp"
           android:paddingStart="15dp"
           android:paddingTop="10dp"
@@ -85,7 +85,7 @@
           android:paddingBottom="10dp"/>
 
       <androidx.appcompat.widget.AppCompatEditText
-          android:id="@+id/editText_event_students"
+          android:id="@+id/editText_event_people"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:background="@color/white"

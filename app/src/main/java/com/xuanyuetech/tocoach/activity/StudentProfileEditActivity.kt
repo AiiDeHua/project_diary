@@ -13,7 +13,7 @@ class StudentProfileEditActivity : BasicActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_folder_detail)
+        setContentView(R.layout.activity_archive_detail)
 
         initToolbar()
 
@@ -41,7 +41,7 @@ class StudentProfileEditActivity : BasicActivity() {
     private fun initFragment(){
         val ts = supportFragmentManager.beginTransaction()
         ts.add(
-            R.id.nav_host_fragment_folder_detail,
+            R.id.nav_host_fragment_archive_detail,
             StudentProfileEditFragment()
         )
         ts.commit()

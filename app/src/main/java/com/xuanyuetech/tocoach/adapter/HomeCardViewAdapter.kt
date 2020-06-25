@@ -65,7 +65,7 @@ class HomeCardViewAdapter(private val homeEvents: List<HomeEvent>, val context :
         val imageView: ImageView = view.findViewById(R.id.homeEvent_imageView)
         val titleView: TextView = view.findViewById(R.id.homeEvent_title)
         val notesView: TextView = view.findViewById(R.id.homeEvent_notes)
-        val studentView: TextView = view.findViewById(R.id.homeEvent_student)
+        val studentView: TextView = view.findViewById(R.id.homeEvent_folder)
     }
 
     /**

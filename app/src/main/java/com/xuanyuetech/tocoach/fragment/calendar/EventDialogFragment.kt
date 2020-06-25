@@ -95,7 +95,7 @@ class EventDialogFragment(private val calendarEvent: CalendarEvent, private val 
         titleEditText.setMaxLength(CalendarEvent().maxTitleLength)
 
         locationText = mView.findViewById(R.id.editText_event_location)
-        studentsText = mView.findViewById(R.id.editText_event_students)
+        studentsText = mView.findViewById(R.id.editText_event_people)
         notesText = mView.findViewById(R.id.editText_event_notes)
         eventFreqStartText = mView.findViewById(R.id.textView_eventFrequency_start)
         eventFreqEndText = mView.findViewById(R.id.textView_eventFrequency_end)

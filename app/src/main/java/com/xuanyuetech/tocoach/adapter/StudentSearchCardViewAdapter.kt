@@ -23,7 +23,7 @@ class StudentArchiveCardViewAdapter(private var studentArchiveObjectList : List<
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.cardview_student_archive_object, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.cardview_archive_list_object, parent, false)
         )
     }
 

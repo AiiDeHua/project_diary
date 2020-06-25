@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <include
-        layout="@layout/content_new_student"
+        layout="@layout/content_new_folder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

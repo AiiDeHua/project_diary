@@ -132,7 +132,7 @@ class SearchActivity : BasicActivity() {
                 }
             })
 
-        val studentRecyclerView : RecyclerView = findViewById(R.id.search_student_list)
+        val studentRecyclerView : RecyclerView = findViewById(R.id.search_folder_list)
         studentRecyclerView.setUpWith(studentCardViewAdapter)
 
         //video search

@@ -26,7 +26,7 @@ class StudentCardViewAdapter(private val listStudents: ArrayList<Student>) : Rec
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.cardview_students,
+                R.layout.cardview_folder,
                 parent,
                 false
             )
@@ -63,9 +63,9 @@ class StudentCardViewAdapter(private val listStudents: ArrayList<Student>) : Rec
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        var imageViewCardViewStudent:ImageView = view.findViewById<View>(R.id.student_frag_cardView_img) as ImageView
-        var textViewStudentCardViewName:TextView = view.findViewById<View>(R.id.student_frag_cardView_name) as TextView
-        var textViewStudentCardViewNote:TextView = view.findViewById<View>(R.id.student_frag_cardView_info) as TextView
+        var imageViewCardViewStudent:ImageView = view.findViewById<View>(R.id.folder_frag_cardView_img) as ImageView
+        var textViewStudentCardViewName:TextView = view.findViewById<View>(R.id.folder_frag_cardView_name) as TextView
+        var textViewStudentCardViewNote:TextView = view.findViewById<View>(R.id.folder_frag_cardView_detail) as TextView
 
     }
 
