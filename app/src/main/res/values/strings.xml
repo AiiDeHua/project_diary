@@ -37,8 +37,8 @@
     <string name="search_activity_col_name_diary">文本日志</string>
 
 <!--    welcome activity-->
-    <string name="privacy_agreement_link">https://blog.csdn.net/weixin_44466403/article/details/106881039</string>
-    <string name="user_agreement_link">https://blog.csdn.net/weixin_44466403/article/details/106913508</string>
+    <string name="privacy_agreement_link">https://blog.csdn.net/weixin_44466403/article/details/106965394</string>
+    <string name="user_agreement_link">https://blog.csdn.net/weixin_44466403/article/details/106965397</string>
     <string name="activity_welcome_user_agreement">《用户协议》</string>
     <string name="activity_welcome_privacy_policy">《隐私政策》</string>
 
