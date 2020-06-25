@@ -10,8 +10,8 @@ class FilePathHelper(val context: Context) {
     private fun appRootExternalDirPath() = context.getExternalFilesDir(null)!!.absolutePath
     private val appDataDirPath = appRootExternalDirPath() + "/data/"
     private val appProfileDirPath = appDataDirPath + "profile/"
-    private val appDiaryDirPath = appDataDirPath + "diary/"
-    private val appVideoDirPath =  appDataDirPath + "coachVideo/"
+    private val appDiaryDirPath = appDataDirPath + "textDiary/"
+    private val appVideoDirPath =  appDataDirPath + "videoDiary/"
     val appTempPath = appDataDirPath + "temp/"
     val appCrushDirPath = appRootExternalDirPath() + "crush/"
 

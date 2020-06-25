@@ -269,7 +269,7 @@ class FolderArchiveFragment : BasicFragment(), OnOffsetChangedListener {
             else profileImageView.setImageResource(R.drawable.profile_default)
 
             if (folderArchiveObjectList.size <= 0) {
-                endTextView.text = "赶紧给添加新的视频和文本日志吧！"
+                endTextView.text = "赶紧添加新的视频和文本日志吧！"
             } else {
                 val videoSize = folderArchiveCardViewAdapter.filterFolderArchiveObjectList.count { it is Video }
                 val diarySize = folderArchiveCardViewAdapter.filterFolderArchiveObjectList.count { it is Diary }

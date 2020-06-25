@@ -6,11 +6,11 @@ import com.xuanyuetech.tocoach.util.CrashHandler
 import com.qiniu.pili.droid.shortvideo.PLShortVideoEnv
 
 
-class ToCoachApplication : Application() {
+class MainApplication : Application() {
 
     private var mContext: Context? = null
 
-    var instace: ToCoachApplication? = null
+    var instace: MainApplication? = null
 
 
     override fun onCreate() {
@@ -27,7 +27,7 @@ class ToCoachApplication : Application() {
     }
 
     companion object{
-        val instance = ToCoachApplication()
+        val instance = MainApplication()
     }
 
 

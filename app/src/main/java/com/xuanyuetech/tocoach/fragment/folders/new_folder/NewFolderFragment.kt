@@ -77,9 +77,7 @@ class NewFolderFragment : BasicFragment() {
     /**
      * init data
      */
-    private fun initData(){
-        mView.findViewById<EditText>(R.id.editText_folder_note).setText("新的日志库")
-    }
+    private fun initData(){}
 
     /**
      * bind listeners
