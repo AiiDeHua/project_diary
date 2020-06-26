@@ -56,7 +56,7 @@
 
 
     <!--    newFolder fragment-->
-    <string name="newFolderActivity_newFolderFrag_title">添加新的视频库</string>
+    <string name="newFolderActivity_newFolderFrag_title">添加新的日志库</string>
     <string name="newFolderActivity_newFolderFrag_addButton">添加</string>
 
     <string name="account_label"> 问题反馈请关注微信订阅号：忆起运动
