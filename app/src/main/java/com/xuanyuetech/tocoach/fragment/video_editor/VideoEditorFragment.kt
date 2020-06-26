@@ -1550,7 +1550,7 @@ class VideoEditorFragment constructor(private val inputVideoUri: Uri) :
         }
 
         val watermarkSetting = PLWatermarkSetting()
-        watermarkSetting.resourceId = R.drawable.coach_archive_bucket_logo_small
+        watermarkSetting.resourceId = R.drawable.full_logo_small
         watermarkSetting.setPosition(0.99f, 0.01f)
         watermarkSetting.setSize(watermarkWidthPer, watermarkHeightPer)
         watermarkSetting.alpha = 150

@@ -46,7 +46,7 @@ public class TextSelectorPanel extends LinearLayout {
         TextInfo[] infos = new TextInfo[colors.length];
         for (int i = 0; i < infos.length; i++) {
             TextInfo textInfo = new TextInfo();
-            textInfo.text = "趣练";
+            textInfo.text = "忆起";
             infos[i] = textInfo;
             textInfo.colorID = colors[i];
             textInfo.alpha = 0.8f;

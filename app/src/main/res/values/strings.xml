@@ -1,9 +1,9 @@
 <resources>
 
     <!--    general-->
-    <string name="app_name">回声</string>
+    <string name="app_name">忆起运动</string>
     <string name="project_version">v1.0.0</string>
-    <string name="team_name">轩岳体育科技工作室</string>
+    <string name="team_name">忆起运动</string>
     <string name="local_save">本地保存</string>
     <string name="pref_previously_started">previous_started</string>
     <string name="pref_previously_privacy_agreement">privacy_agreement</string>
@@ -59,7 +59,7 @@
     <string name="newFolderActivity_newFolderFrag_title">添加新的视频库</string>
     <string name="newFolderActivity_newFolderFrag_addButton">添加</string>
 
-    <string name="account_label"> 问题反馈请关注微信订阅号：趣练
+    <string name="account_label"> 问题反馈请关注微信订阅号：忆起运动
     </string>
 
 

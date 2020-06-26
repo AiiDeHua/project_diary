@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/burlywood_70"
-                android:src="@drawable/coach_archive_bucket_logo" />
+                android:src="@drawable/full_logo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
