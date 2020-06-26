@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.xuanyuetech.tocoach">
+    package="com.yiqisport.yiqiapp">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -10,7 +10,7 @@
 
 
     <application
-        android:name="com.xuanyuetech.tocoach.MainApplication"
+        android:name="com.yiqisport.yiqiapp.MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,7 +23,7 @@
         tools:targetApi="q">
 
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.MainActivity"
+            android:name="com.yiqisport.yiqiapp.activity.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
@@ -35,45 +35,45 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.VideoEditorActivity"
+            android:name="com.yiqisport.yiqiapp.activity.VideoEditorActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.DiaryActivity"
+            android:name="com.yiqisport.yiqiapp.activity.DiaryActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.SearchActivity"
+            android:name="com.yiqisport.yiqiapp.activity.SearchActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.NewFolderActivity"
-            android:parentActivityName="com.xuanyuetech.tocoach.activity.MainActivity"
+            android:name="com.yiqisport.yiqiapp.activity.NewFolderActivity"
+            android:parentActivityName="com.yiqisport.yiqiapp.activity.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:configChanges="keyboardHidden|orientation"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.FolderActivity"
-            android:parentActivityName="com.xuanyuetech.tocoach.activity.MainActivity"
+            android:name="com.yiqisport.yiqiapp.activity.FolderActivity"
+            android:parentActivityName="com.yiqisport.yiqiapp.activity.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:configChanges="keyboardHidden|orientation"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.FolderProfileActivity"
-            android:parentActivityName="com.xuanyuetech.tocoach.activity.FolderActivity"
+            android:name="com.yiqisport.yiqiapp.activity.FolderProfileActivity"
+            android:parentActivityName="com.yiqisport.yiqiapp.activity.FolderActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name="com.xuanyuetech.tocoach.activity.FolderProfileEditActivity"
-            android:parentActivityName="com.xuanyuetech.tocoach.activity.FolderProfileActivity"
+            android:name="com.yiqisport.yiqiapp.activity.FolderProfileEditActivity"
+            android:parentActivityName="com.yiqisport.yiqiapp.activity.FolderProfileActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
-        <activity android:name="com.xuanyuetech.tocoach.activity.VideoPlayerActivity"
+        <activity android:name="com.yiqisport.yiqiapp.activity.VideoPlayerActivity"
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
-        <activity android:name="com.xuanyuetech.tocoach.activity.WelcomeActivity"
+        <activity android:name="com.yiqisport.yiqiapp.activity.WelcomeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
             tools:ignore="LockedOrientationActivity"/>

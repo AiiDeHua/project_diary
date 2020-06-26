@@ -13,18 +13,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.xuanyuetech.tocoach.util.videoeditor.SquareRelativeLayout
+        <com.yiqisport.yiqiapp.util.videoeditor.SquareRelativeLayout
             android:id="@+id/t"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.xuanyuetech.tocoach.util.videoeditor.SquareGLSurfaceView
+            <com.yiqisport.yiqiapp.util.videoeditor.SquareGLSurfaceView
                 android:id="@+id/preview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-        </com.xuanyuetech.tocoach.util.videoeditor.SquareRelativeLayout>
+        </com.yiqisport.yiqiapp.util.videoeditor.SquareRelativeLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.xuanyuetech.tocoach.util.videoeditor.ReversedSeekBar
+            <com.yiqisport.yiqiapp.util.videoeditor.ReversedSeekBar
                 android:id="@+id/seekBar_video_shadow_right"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,12 +125,12 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-        <com.xuanyuetech.tocoach.util.videoeditor.DisableScrollViewPager
+        <com.yiqisport.yiqiapp.util.videoeditor.DisableScrollViewPager
             android:id="@+id/video_editor_view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </com.xuanyuetech.tocoach.util.videoeditor.DisableScrollViewPager>
+        </com.yiqisport.yiqiapp.util.videoeditor.DisableScrollViewPager>
     </androidx.appcompat.widget.LinearLayoutCompat>
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/video_editor_floating_menu"

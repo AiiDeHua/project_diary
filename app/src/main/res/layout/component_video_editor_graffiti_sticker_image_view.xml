@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.xuanyuetech.tocoach.util.videoeditor.StickerImageView
+<com.yiqisport.yiqiapp.util.videoeditor.StickerImageView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/overlay_touch_view"

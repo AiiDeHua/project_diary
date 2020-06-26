@@ -6,25 +6,25 @@
 
     <fragment
         android:id="@+id/nav_main_folders"
-        android:name="com.xuanyuetech.tocoach.fragment.folders.FoldersFragment"
+        android:name="com.yiqisport.yiqiapp.fragment.folders.FoldersFragment"
         android:label="@string/mainActivity_foldersFrag_title"
         tools:layout="@layout/fragment_folders" />
 
     <fragment
         android:id="@+id/nav_main_calendar"
-        android:name="com.xuanyuetech.tocoach.fragment.calendar.CalendarFragment"
+        android:name="com.yiqisport.yiqiapp.fragment.calendar.CalendarFragment"
         android:label="@string/mainActivity_calendarFrag_title"
         tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/nav_main_home"
-        android:name="com.xuanyuetech.tocoach.fragment.home.HomeFragment"
+        android:name="com.yiqisport.yiqiapp.fragment.home.HomeFragment"
         android:label="@string/mainActivity_homeFrag_title"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_main_account"
-        android:name="com.xuanyuetech.tocoach.fragment.account.AccountFragment"
+        android:name="com.yiqisport.yiqiapp.fragment.account.AccountFragment"
         android:label="@string/mainActivity_accountFrag_title"
         tools:layout="@layout/fragment_account" />
 

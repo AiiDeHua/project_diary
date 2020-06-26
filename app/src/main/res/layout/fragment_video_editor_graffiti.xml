@@ -69,19 +69,19 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <com.xuanyuetech.tocoach.util.videoeditor.PaintSelectorPanel
+            <com.yiqisport.yiqiapp.util.videoeditor.PaintSelectorPanel
                 android:id="@+id/paint_selector_panel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"/>
 
-            <com.xuanyuetech.tocoach.util.videoeditor.TextSelectorPanel
+            <com.yiqisport.yiqiapp.util.videoeditor.TextSelectorPanel
                 android:id="@+id/video_editor_text_selector_panel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"/>
 
-            <com.xuanyuetech.tocoach.util.videoeditor.ImageSelectorPanel
+            <com.yiqisport.yiqiapp.util.videoeditor.ImageSelectorPanel
                 android:id="@+id/video_editor_image_selector_panel"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

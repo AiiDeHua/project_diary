@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:layout_marginTop="20dp">
 
-    <com.xuanyuetech.tocoach.util.videoeditor.StrokedTextView
+    <com.yiqisport.yiqiapp.util.videoeditor.StrokedTextView
         android:id="@+id/video_editor_text_select_panel_item_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

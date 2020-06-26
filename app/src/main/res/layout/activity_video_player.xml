@@ -57,7 +57,7 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-                        <com.xuanyuetech.tocoach.util.videoeditor.DisableScrollViewPager
+                        <com.yiqisport.yiqiapp.util.videoeditor.DisableScrollViewPager
                             android:id="@+id/video_player_view_pager"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"/>
